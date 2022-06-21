@@ -1,0 +1,2 @@
+# VelocityELO
+ELO discord bot

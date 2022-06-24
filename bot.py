@@ -1,4 +1,4 @@
-# import discord interactions
+import discord
 import interactions
 import json
 
@@ -13,10 +13,25 @@ bot = interactions.Client(token=TOKEN)
 #####################################################################################
 # JSON Handling functions
 
-def objectToJson(object):
-    return json.dumps(object.__dict__)
+def objectToJson(object1):
+    return json.dumps(object1.__dict__)
 
-# TODO: add JSON to object functions for game and players
+def writeJson(newData, fileName):
+    with open(fileName,'r+') as f:
+        fileData = json.load(f)
+        print(type(fileData))
+        fileData["Players"].append(newData.__dict__)
+        f.seek(0)
+        json.dump(fileData, f, indent = 4)
+
+def checkJson(checkData, fileName):
+    with open(fileName, 'r+') as f:
+        fileData = json.load(f)
+        print(fileData)
+        if checkData in fileData:
+            return True
+        else:
+            return False
 
 #####################################################################################
 # classes for storing data
@@ -29,8 +44,10 @@ class Game:
 
 class Player:
     def __init__(self, username, ELO):
-        self.username = "Name"
-        self.ELO = 1000
+        self.username = username
+        self.ELO = ELO
+
+
 
 #####################################################################################
 # Test command to make sure bot is working 
@@ -81,7 +98,7 @@ button = interactions.Button(
 @bot.command(
     name="button_test",
     description="This is the first command I made!",
-    scope=ID,
+    scope=ID
 )
 async def button_test(ctx):
     await ctx.send("testing", components=button)
@@ -90,7 +107,21 @@ async def button_test(ctx):
 async def button_response(ctx):
     await ctx.send("You clicked the Button :O", ephemeral=True)
 
-# 
+# Command to register a user in the database
+@bot.command(
+    name="register",
+    description="Registers a player in the database",
+    scope=ID
+)
+
+async def register(ctx):
+    print(f"Registering user {ctx.author.name}")
+    player = Player(ctx.author.name, 1000)
+    writeJson(player, "players.json")
+
+    await ctx.send(f"You have been registered as {ctx.author.name}")
+
+
 
 
 # starts the bot

@@ -1,8 +1,36 @@
+# import discord interactions
 import interactions
-from tokenId import *
+import json
+
+# Open config file
+with open("config.json") as f:
+    configFile = json.load(f)
+TOKEN = configFile['TOKEN']
+ID = int(configFile['ID'])
+print(TOKEN+" "+str(ID))
 
 bot = interactions.Client(token=TOKEN)
+#####################################################################################
+# JSON Handling functions
 
+def objectToJson(object):
+    return json.dumps(object.__dict__)
+
+# TODO: add JSON to object functions for game and players
+
+#####################################################################################
+# classes for storing data
+class Game:
+    def __init__(self, players, team1, team2, map): 
+        self.players = players
+        self.team1 = team1
+        self.team2 = team1
+        self.map = map
+
+class Player:
+    def __init__(self, username, ELO):
+        self.username = "Name"
+        self.ELO = 1000
 
 #####################################################################################
 # Test command to make sure bot is working 
@@ -19,7 +47,7 @@ async def test(ctx: interactions.CommandContext):
 
 @bot.command(
     name="echo",
-    description="registers a user",
+    description="repeats a message",
     scope=ID,
     options = [
         interactions.Option(

@@ -1,8 +1,1 @@
-{
-    "Players": [
-        {
-            "username": "Velocity",
-            "ELO": 1000
-        }
-    ]
-}
+[{"username": "Zain", "ELO": 1000}, {"username": "Alkminion (crustless since '96)", "ELO": 1000}, {"username": "Velocity", "ELO": 1000}]

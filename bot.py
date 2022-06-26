@@ -19,19 +19,21 @@ def objectToJson(object1):
 def writeJson(newData, fileName):
     with open(fileName,'r+') as f:
         fileData = json.load(f)
-        print(type(fileData))
-        fileData["Players"].append(newData.__dict__)
+        print(fileData)
+        fileData.append(newData.__dict__)
         f.seek(0)
-        json.dump(fileData, f, indent = 4)
+        json.dump(fileData, f)
 
-def checkJson(checkData, fileName):
+def checkJson(checkData, categoryOfData, fileName):
     with open(fileName, 'r+') as f:
         fileData = json.load(f)
         print(fileData)
-        if checkData in fileData:
-            return True
-        else:
-            return False
+        for elem in fileData:
+            print(elem.get(categoryOfData))
+            if (checkData == elem.get(categoryOfData)):
+                return True
+        return False
+            
 
 #####################################################################################
 # classes for storing data
@@ -116,10 +118,12 @@ async def button_response(ctx):
 
 async def register(ctx):
     print(f"Registering user {ctx.author.name}")
-    player = Player(ctx.author.name, 1000)
-    writeJson(player, "players.json")
-
-    await ctx.send(f"You have been registered as {ctx.author.name}")
+    if (checkJson(ctx.author.name, "username", "players.json")==False):
+        player = Player(ctx.author.name, 1000)
+        writeJson(player, "players.json")
+        await ctx.send(f"You have been registered as {ctx.author.name}")
+    else:
+        await ctx.send(f"You are already registered as {ctx.author.name}")
 
 
 

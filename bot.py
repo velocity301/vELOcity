@@ -1,6 +1,7 @@
 import discord
 import interactions
 import json
+import random
 
 # Open config file
 with open("config.json") as f:
@@ -19,7 +20,6 @@ def objectToJson(object1):
 def writeJson(newData, fileName):
     with open(fileName,'r+') as f:
         fileData = json.load(f)
-        print(fileData)
         fileData.append(newData.__dict__)
         f.seek(0)
         json.dump(fileData, f)
@@ -27,27 +27,39 @@ def writeJson(newData, fileName):
 def checkJson(checkData, categoryOfData, fileName):
     with open(fileName, 'r+') as f:
         fileData = json.load(f)
-        print(fileData)
         for elem in fileData:
-            print(elem.get(categoryOfData))
             if (checkData == elem.get(categoryOfData)):
                 return True
         return False
             
+def addAttributeJson(newAttribute, newAttributeDefault, fileName):
+    with open(fileName, 'r+') as f:
+        fileData = json.load(f)
+        for elem in fileData:
+            print(elem)
+            elem[newAttribute] = newAttributeDefault
+        f.seek(0)
+        json.dump(fileData, f)
 
 #####################################################################################
 # classes for storing data
 class Game:
-    def __init__(self, players, team1, team2, map): 
-        self.players = players
-        self.team1 = team1
-        self.team2 = team1
-        self.map = map
+    def __init__(self): 
+        self.players = []
+        self.team1 = []
+        self.team2 = []
+        self.map = random.choice(["Split", "Ascent", "Icebox", "Breeze", "Bind", "Haven", "Fracture", "Pearl"])
 
 class Player:
     def __init__(self, username, ELO):
         self.username = username
-        self.ELO = ELO
+        self.ELO = 1000
+        self.wins = 0
+        self.losses = 0
+        self.kills = 0
+        self.deaths = 0
+        self.assists = 0
+
 
 
 
@@ -107,7 +119,7 @@ async def button_test(ctx):
 
 @bot.component("hello")
 async def button_response(ctx):
-    await ctx.send("You clicked the Button :O", ephemeral=True)
+    await ctx.send("You clicked the Button :O")
 
 # Command to register a user in the database
 @bot.command(
@@ -119,14 +131,47 @@ async def button_response(ctx):
 async def register(ctx):
     print(f"Registering user {ctx.author.name}")
     if (checkJson(ctx.author.name, "username", "players.json")==False):
-        player = Player(ctx.author.name, 1000)
-        writeJson(player, "players.json")
+        writeJson(Player(ctx.author.name, 1000), "players.json")
         await ctx.send(f"You have been registered as {ctx.author.name}")
     else:
         await ctx.send(f"You are already registered as {ctx.author.name}")
 
+# Command to create a lobby for people to join
+@bot.command(
+    name="create", 
+    description="Creates a lobby for players to join",
+    scope=ID
+)
 
+async def create(ctx):
+    joinTeam1 = interactions.Button(
+        style=interactions.ButtonStyle.PRIMARY, 
+        label="Join Attackers",
+        custom_id="team1"    
+    )
+    joinTeam2 = interactions.Button(
+        style=interactions.ButtonStyle.PRIMARY, 
+        label="Join Defenders",
+        custom_id="team2"   
+    )
+    gameControls = interactions.ActionRow(
+        components=[joinTeam1, joinTeam2]
+    )
+    gameDetailsString = "Map: Ascent\n\n**Attackers**\n```\n-----\n-----\n-----\n-----\n-----\n```**Defenders**\n```\n-----\n-----\n-----\n-----\n----- ```"
+    await ctx.send(gameDetailsString, components=gameControls)
 
+    print(f"Creating lobby")
+    # writeJson(Game(), "games.json")
+
+    #add player who invoked command to the game's team 1
+    #create a message that has the game's two teams and map name with two buttons that say join team
+@bot.component("team1")
+async def button_response1(ctx):
+    await ctx.edit(f"{ctx.author.name} joined team 1")
+
+@bot.component("team2")
+async def button_response2(ctx):
+    await ctx.edit(f"{ctx.author.name} joined team 2")
 
 # starts the bot
 bot.start()

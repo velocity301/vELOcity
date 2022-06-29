@@ -44,10 +44,36 @@ def addAttributeJson(newAttribute, newAttributeDefault, fileName):
             elem[newAttribute] = newAttributeDefault
         f.seek(0)
         json.dump(fileData, f)
-            
+
+def returnGameID():
+    with open("config.json", 'r+') as f:
+        fileData = json.load(f)
+        print(fileData)
+        return fileData["gameID"] 
+
+def incrementGameID():
+    with open("config.json", 'r+') as f:
+        fileData = json.load(f)
+        print(fileData)
+        fileData["gameID"]+=1
+        print(fileData)
+        f.seek(0)
+        json.dump(fileData, f)
+
+def drawLobby():
+    with open("games.json", 'r+') as f:
+        lobbyString = ""
+        fileData = json.load(f)
+        
+
+
+
 
 # print(checkJson("Alkminion", "username", "players.json"))
 
 # addAttributeJson("losses", 0, "players.json")
 
-writeJson(Game(), "games.json")
+# incrementGameID()
+# print(returnGameID())
+
+# writeJson(Game(), "games.json")

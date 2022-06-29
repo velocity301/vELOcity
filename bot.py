@@ -41,15 +41,33 @@ def addAttributeJson(newAttribute, newAttributeDefault, fileName):
         f.seek(0)
         json.dump(fileData, f)
 
+def incrementGameID():
+    with open("config.json", 'r+') as f:
+        fileData = json.load(f)
+        print(fileData)
+        fileData["gameID"]+=1
+        print(fileData)
+        f.seek(0)
+        json.dump(fileData, f)
+
+def returnGameID():
+    with open("config.json", 'r+') as f:
+        fileData = json.load(f)
+        print(fileData)
+        return fileData["gameID"] 
+
 #####################################################################################
 # classes for storing data
 class Game:
-    def __init__(self): 
+    def __init__(self, gameID): 
+        with open("config.json") as f:
+            configFile = json.load(f)
+            self.gameID = configFile['gameID']
         self.players = []
-        self.team1 = []
-        self.team2 = []
+        self.team1 = ["-----","-----","-----","-----","-----"]
+        self.team2 = ["-----","-----","-----","-----","-----"]
         self.map = random.choice(["Split", "Ascent", "Icebox", "Breeze", "Bind", "Haven", "Fracture", "Pearl"])
-
+        self.gameID = gameID
 class Player:
     def __init__(self, username, ELO):
         self.username = username
@@ -89,7 +107,7 @@ async def test(ctx: interactions.CommandContext):
         ),
     ],
 )
-async def register(ctx: interactions.CommandContext, text: str):
+async def echo(ctx: interactions.CommandContext, text: str):
     await ctx.send(f"{text}")
 
 # Menu based command 
@@ -144,6 +162,12 @@ async def register(ctx):
 )
 
 async def create(ctx):
+    gameID = returnGameID()
+    newGame = Game(gameID)
+    writeJson(newGame, "games.json")
+    print(newGame.gameID)
+    incrementGameID()
+
     joinTeam1 = interactions.Button(
         style=interactions.ButtonStyle.PRIMARY, 
         label="Join Attackers",
@@ -154,10 +178,20 @@ async def create(ctx):
         label="Join Defenders",
         custom_id="team2"   
     )
+    leaveGame = interactions.Button(
+        style=interactions.ButtonStyle.PRIMARY, 
+        label="Exit lobby",
+        custom_id="leaveGame"   
+    )
     gameControls = interactions.ActionRow(
         components=[joinTeam1, joinTeam2]
     )
-    gameDetailsString = "Map: Ascent\n\n**Attackers**\n```\n-----\n-----\n-----\n-----\n-----\n```**Defenders**\n```\n-----\n-----\n-----\n-----\n----- ```"
+    gameDetailsString = f"Map: {newGame.map}\n\n**Attackers**\n```"
+    
+    # ```\n-----\n-----\n-----\n-----\n-----\n```
+    # **Defenders**\n```\n-----\n-----\n-----\n-----\n----- ```"
+    
+    
     await ctx.send(gameDetailsString, components=gameControls)
 
     print(f"Creating lobby")
@@ -165,13 +199,18 @@ async def create(ctx):
 
     #add player who invoked command to the game's team 1
     #create a message that has the game's two teams and map name with two buttons that say join team
+
 @bot.component("team1")
-async def button_response1(ctx):
+async def button_response1(ctx, gameDetailsString):
     await ctx.edit(f"{ctx.author.name} joined team 1")
 
 @bot.component("team2")
 async def button_response2(ctx):
     await ctx.edit(f"{ctx.author.name} joined team 2")
+
+@bot.component("leaveGame")
+async def button_response2(ctx):
+    await ctx.edit(f"{ctx.author.name} left the game")
 
 # starts the bot
 bot.start()

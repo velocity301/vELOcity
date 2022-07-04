@@ -60,6 +60,18 @@ def incrementGameID():
         f.seek(0)
         json.dump(fileData, f)
 
+
+def addPlayerJson(playerName):
+    with open("games.json", 'r+') as f:
+        fileData = json.load(f)
+        print(fileData)
+        for elem in fileData:
+            if elem["gameID"] == returnGameID():
+                elem["players"] += playerName
+        f.seek(0)
+        json.dump(fileData, f)
+
+
 def drawLobby():
     with open("games.json", 'r+') as f:
         lobbyString = ""

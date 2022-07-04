@@ -22,7 +22,7 @@ def writeJson(newData, fileName):
         fileData = json.load(f)
         fileData.append(newData.__dict__)
         f.seek(0)
-        json.dump(fileData, f)
+        json.dump(fileData, f, indent = 4)
 
 def checkJson(checkData, categoryOfData, fileName):
     with open(fileName, 'r+') as f:
@@ -36,25 +36,48 @@ def addAttributeJson(newAttribute, newAttributeDefault, fileName):
     with open(fileName, 'r+') as f:
         fileData = json.load(f)
         for elem in fileData:
-            print(elem)
             elem[newAttribute] = newAttributeDefault
         f.seek(0)
-        json.dump(fileData, f)
+        json.dump(fileData, f, indent = 4)
 
 def incrementGameID():
     with open("config.json", 'r+') as f:
         fileData = json.load(f)
-        print(fileData)
         fileData["gameID"]+=1
-        print(fileData)
         f.seek(0)
-        json.dump(fileData, f)
+        json.dump(fileData, f, indent = 4)
 
 def returnGameID():
     with open("config.json", 'r+') as f:
         fileData = json.load(f)
-        print(fileData)
         return fileData["gameID"] 
+
+def addPlayerJson(playerName, team):
+    with open("games.json", 'r+') as f:
+        fileData = json.load(f)
+        for elem in fileData: 
+            if (elem["gameID"] == returnGameID()-1) and (playerName not in elem["players"]):
+                print("Match found, adding player")
+                elem["players"].append(playerName)
+                elem[team].append(playerName)
+        f.seek(0)
+        json.dump(fileData, f, indent = 4)
+
+def removePlayerJson(playerName):
+    with open("games.json", 'r+') as f:
+        fileData = json.load(f)
+    for elem in fileData:
+        if (elem["gameID"] == returnGameID()-1):
+            print("Found Game")
+            if playerName in elem["players"]:
+                print("player found, removing")
+                elem["players"].remove(playerName)
+            if playerName in elem["team1"]:
+                elem["team1"].remove(playerName)
+            if playerName in elem["team2"]:
+                elem["team2"].remove(playerName)
+    with open("games.json", 'w') as f:
+        json.dump(fileData, f, indent = 4)
 
 #####################################################################################
 # classes for storing data
@@ -64,8 +87,8 @@ class Game:
             configFile = json.load(f)
             self.gameID = configFile['gameID']
         self.players = []
-        self.team1 = ["-----","-----","-----","-----","-----"]
-        self.team2 = ["-----","-----","-----","-----","-----"]
+        self.team1 = []
+        self.team2 = []
         self.map = random.choice(["Split", "Ascent", "Icebox", "Breeze", "Bind", "Haven", "Fracture", "Pearl"])
         self.gameID = gameID
 class Player:
@@ -162,6 +185,19 @@ async def register(ctx):
 )
 
 async def create(ctx):
+    
+    @bot.component("team1")
+    async def button_response1(ctx):
+        addPlayerJson(ctx.author.name, "team1")
+
+    @bot.component("team2")
+    async def button_response2(ctx):
+        addPlayerJson(ctx.author.name, "team2")
+
+    @bot.component("leaveGame")
+    async def button_response2(ctx):
+        removePlayerJson(ctx.author.name)
+    
     gameID = returnGameID()
     newGame = Game(gameID)
     writeJson(newGame, "games.json")
@@ -184,7 +220,7 @@ async def create(ctx):
         custom_id="leaveGame"   
     )
     gameControls = interactions.ActionRow(
-        components=[joinTeam1, joinTeam2]
+        components=[joinTeam1, joinTeam2, leaveGame]
     )
     gameDetailsString = f"Map: {newGame.map}\n\n**Attackers**\n```"
     
@@ -200,17 +236,7 @@ async def create(ctx):
     #add player who invoked command to the game's team 1
     #create a message that has the game's two teams and map name with two buttons that say join team
 
-@bot.component("team1")
-async def button_response1(ctx, gameDetailsString):
-    await ctx.edit(f"{ctx.author.name} joined team 1")
 
-@bot.component("team2")
-async def button_response2(ctx):
-    await ctx.edit(f"{ctx.author.name} joined team 2")
-
-@bot.component("leaveGame")
-async def button_response2(ctx):
-    await ctx.edit(f"{ctx.author.name} left the game")
 
 # starts the bot
 bot.start()

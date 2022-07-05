@@ -2,6 +2,8 @@ import discord
 import interactions
 import json
 import random
+import riotAPI
+from jsonHandler import *
 
 # Open config file
 with open("config.json") as f:
@@ -11,75 +13,7 @@ ID = int(configFile['ID'])
 print(TOKEN+" "+str(ID))
 
 bot = interactions.Client(token=TOKEN)
-#####################################################################################
-# JSON Handling functions
 
-def objectToJson(object1):
-    return json.dumps(object1.__dict__)
-
-def writeJson(newData, fileName):
-    with open(fileName,'r+') as f:
-        fileData = json.load(f)
-        fileData.append(newData.__dict__)
-        f.seek(0)
-        json.dump(fileData, f, indent = 4)
-
-def checkJson(checkData, categoryOfData, fileName):
-    with open(fileName, 'r+') as f:
-        fileData = json.load(f)
-        for elem in fileData:
-            if (checkData == elem.get(categoryOfData)):
-                return True
-        return False
-            
-def addAttributeJson(newAttribute, newAttributeDefault, fileName):
-    with open(fileName, 'r+') as f:
-        fileData = json.load(f)
-        for elem in fileData:
-            elem[newAttribute] = newAttributeDefault
-        f.seek(0)
-        json.dump(fileData, f, indent = 4)
-
-def incrementGameID():
-    with open("config.json", 'r+') as f:
-        fileData = json.load(f)
-        fileData["gameID"]+=1
-        f.seek(0)
-        json.dump(fileData, f, indent = 4)
-
-def returnGameID():
-    with open("config.json", 'r+') as f:
-        fileData = json.load(f)
-        return fileData["gameID"] 
-
-def addPlayerJson(playerName, team):
-    with open("games.json", 'r+') as f:
-        fileData = json.load(f)
-        for elem in fileData: 
-            if (elem["gameID"] == returnGameID()-1) and (playerName not in elem["players"]):
-                print("Match found, adding player")
-                elem["players"].append(playerName)
-                elem[team].append(playerName)
-        f.seek(0)
-        json.dump(fileData, f, indent = 4)
-
-def removePlayerJson(playerName):
-    with open("games.json", 'r+') as f:
-        fileData = json.load(f)
-    for elem in fileData:
-        if (elem["gameID"] == returnGameID()-1):
-            print("Found Game")
-            if playerName in elem["players"]:
-                print("player found, removing")
-                elem["players"].remove(playerName)
-            if playerName in elem["team1"]:
-                elem["team1"].remove(playerName)
-            if playerName in elem["team2"]:
-                elem["team2"].remove(playerName)
-    with open("games.json", 'w') as f:
-        json.dump(fileData, f, indent = 4)
-
-#####################################################################################
 # classes for storing data
 class Game:
     def __init__(self, gameID): 
@@ -91,6 +25,7 @@ class Game:
         self.team2 = []
         self.map = random.choice(["Split", "Ascent", "Icebox", "Breeze", "Bind", "Haven", "Fracture", "Pearl"])
         self.gameID = gameID
+        self.result = "waiting to start"
 class Player:
     def __init__(self, username, ELO):
         self.username = username
@@ -100,9 +35,6 @@ class Player:
         self.kills = 0
         self.deaths = 0
         self.assists = 0
-
-
-
 
 #####################################################################################
 # Test command to make sure bot is working 
@@ -115,8 +47,7 @@ class Player:
 async def test(ctx: interactions.CommandContext):
     await ctx.send("Hi there!")
 
-# Registers the user who types the command into the player database
-
+# repeats a message
 @bot.command(
     name="echo",
     description="repeats a message",
@@ -143,24 +74,6 @@ async def echo(ctx: interactions.CommandContext, text: str):
 async def test(ctx):
     await ctx.send(f"{ctx.target.user.username} sucks.")
 
-# button test can use to join game or something
-button = interactions.Button(
-    style=interactions.ButtonStyle.PRIMARY,
-    label="hello world!",
-    custom_id="hello"
-)
-
-@bot.command(
-    name="button_test",
-    description="This is the first command I made!",
-    scope=ID
-)
-async def button_test(ctx):
-    await ctx.send("testing", components=button)
-
-@bot.component("hello")
-async def button_response(ctx):
-    await ctx.send("You clicked the Button :O")
 
 # Command to register a user in the database
 @bot.command(
@@ -168,7 +81,6 @@ async def button_response(ctx):
     description="Registers a player in the database",
     scope=ID
 )
-
 async def register(ctx):
     print(f"Registering user {ctx.author.name}")
     if (checkJson(ctx.author.name, "username", "players.json")==False):
@@ -189,15 +101,51 @@ async def create(ctx):
     @bot.component("team1")
     async def button_response1(ctx):
         addPlayerJson(ctx.author.name, "team1")
+        if getLobbyHeadCount() == 10:
+            await ctx.edit(drawLobby(), components = gameControls2)
+        else:
+            await ctx.edit(drawLobby(), components=gameControls)
 
     @bot.component("team2")
     async def button_response2(ctx):
         addPlayerJson(ctx.author.name, "team2")
+        if getLobbyHeadCount() == 10:
+            await ctx.edit(drawLobby(), components = gameControls2)
+        else:
+            await ctx.edit(drawLobby(), components=gameControls)
 
     @bot.component("leaveGame")
-    async def button_response2(ctx):
+    async def button_response3(ctx):
         removePlayerJson(ctx.author.name)
+        if getLobbyHeadCount() < 10:
+            await ctx.edit(drawLobby(), components = gameControls)
+        elif getLobbyHeadCount() == 10:
+            await ctx.edit(drawLobby(), components=gameControls2)
     
+    @bot.component("startGame")
+    async def button_response4(ctx):
+        setGameResult("in progress")
+        gameControls=interactions.ActionRow(
+            components=[team1Win, team2Win, cancelGame]
+        )
+        await ctx.edit(drawLobby(), components=gameControls)
+
+    @bot.component("team1Win")
+    async def button_response5(ctx):
+        setGameResult("team1")
+        # setWinELO("team1", returnGameID)
+        await ctx.edit(drawLobby(), components=[])
+
+    @bot.component("team2Win")
+    async def button_response5(ctx):
+        setGameResult("team2")
+        await ctx.edit(drawLobby(), components=[])
+
+    @bot.component("cancelGame")
+    async def button_response5(ctx):
+        setGameResult("canceled")
+        await ctx.edit(drawLobby(), components=[])
+
     gameID = returnGameID()
     newGame = Game(gameID)
     writeJson(newGame, "games.json")
@@ -219,22 +167,45 @@ async def create(ctx):
         label="Exit lobby",
         custom_id="leaveGame"   
     )
+    startGame = interactions.Button(
+        style=interactions.ButtonStyle.PRIMARY,
+        label="Start Game", 
+        custom_id="startGame"
+    )
+
+    team1Win = interactions.Button(
+        style=interactions.ButtonStyle.PRIMARY,
+        label="Team 1 Wins", 
+        custom_id="team1Win"
+    )
+
+    team2Win = interactions.Button(
+        style=interactions.ButtonStyle.PRIMARY,
+        label="Team 2 Wins", 
+        custom_id="team2Win"
+    )
+
+    cancelGame = interactions.Button(
+        style=interactions.ButtonStyle.PRIMARY,
+        label="Cancel Game", 
+        custom_id="cancelGame"
+    )
+
     gameControls = interactions.ActionRow(
         components=[joinTeam1, joinTeam2, leaveGame]
     )
-    gameDetailsString = f"Map: {newGame.map}\n\n**Attackers**\n```"
     
-    # ```\n-----\n-----\n-----\n-----\n-----\n```
-    # **Defenders**\n```\n-----\n-----\n-----\n-----\n----- ```"
+    gameControls2 = interactions.ActionRow(
+        components=[startGame, leaveGame]
+    )
+
+    gameControls3 = interactions.ActionRow(
+        components=[team1Win, team2Win, cancelGame]
+    )
     
-    
-    await ctx.send(gameDetailsString, components=gameControls)
+    await ctx.send(drawLobby(), components=gameControls)
 
     print(f"Creating lobby")
-    # writeJson(Game(), "games.json")
-
-    #add player who invoked command to the game's team 1
-    #create a message that has the game's two teams and map name with two buttons that say join team
 
 
 

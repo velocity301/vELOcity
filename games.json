@@ -1,9 +1,101 @@
 [
     {
-        "gameID": 59,
-        "players": [],
-        "team1": [],
+        "gameID": 4,
+        "players": [
+            "Velocity"
+        ],
+        "team1": [
+            "Velocity"
+        ],
         "team2": [],
-        "map": "Haven"
+        "map": "Bind",
+        "result": "in progress"
+    },
+    {
+        "gameID": 5,
+        "players": [
+            "Velocity"
+        ],
+        "team1": [],
+        "team2": [
+            "Velocity"
+        ],
+        "map": "Icebox",
+        "result": "in progress"
+    },
+    {
+        "gameID": 6,
+        "players": [
+            "Velocity"
+        ],
+        "team1": [
+            "Velocity"
+        ],
+        "team2": [],
+        "map": "Breeze",
+        "result": "in progress"
+    },
+    {
+        "gameID": 7,
+        "players": [
+            "Velocity"
+        ],
+        "team1": [
+            "Velocity"
+        ],
+        "team2": [],
+        "map": "Icebox",
+        "result": "team2"
+    },
+    {
+        "gameID": 8,
+        "players": [
+            "Velocity"
+        ],
+        "team1": [
+            "Velocity"
+        ],
+        "team2": [],
+        "map": "Split",
+        "result": "team1"
+    },
+    {
+        "gameID": 9,
+        "players": [
+            "Velocity"
+        ],
+        "team1": [
+            "Velocity"
+        ],
+        "team2": [],
+        "map": "Breeze",
+        "result": "canceled"
+    },
+    {
+        "gameID": 10,
+        "players": [
+            "Velocity"
+        ],
+        "team1": [
+            "Velocity"
+        ],
+        "team2": [],
+        "map": "Ascent",
+        "result": "team2"
+    },
+    {
+        "gameID": 11,
+        "players": [
+            "Velocity",
+            "Jo Mana"
+        ],
+        "team1": [
+            "Velocity"
+        ],
+        "team2": [
+            "Jo Mana"
+        ],
+        "map": "Split",
+        "result": "waiting to start"
     }
 ]

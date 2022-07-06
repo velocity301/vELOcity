@@ -112,14 +112,46 @@ def setGameResult(result):
     with open("games.json", 'w') as f:
         json.dump(fileData, f, indent = 4)
 
-# def setWinELO(team, gameID):
-#     with open("games.json", 'r+') as f:
-#         gamesData = json.load(f)
-#     for elem in gamesData:
-#         if elem["gameID"] == gameID:
-#             print("ELO test")
-#             gameData = elem
-#     print(gameData)
-#     with open("players.json", 'r+') as f:
-#         playersData = json.load(f)
-    
+def setWinELO(team, gameID):
+    with open("games.json", 'r+') as f:
+        gamesData = json.load(f)
+    for elem in gamesData:
+        if elem["gameID"] == gameID:
+            gameData = elem
+    print(gameData)
+    with open("players.json", 'r+') as f:
+        playersData = json.load(f)
+    for member in gameData[team]:
+        for player in playersData:
+            if member == player["username"]:
+                player["ELO"] += 10
+    with open("players.json", 'w') as f:
+        json.dump(playersData, f, indent = 4)
+
+def setLossELO(team, gameID):
+    with open("games.json", 'r+') as f:
+        gamesData = json.load(f)
+    for elem in gamesData:
+        if elem["gameID"] == gameID:
+            gameData = elem
+    print(gameData)
+    with open("players.json", 'r+') as f:
+        playersData = json.load(f)
+    for member in gameData[team]:
+        for player in playersData:
+            if member == player["username"]:
+                player["ELO"] -= 10
+    with open("players.json", 'w') as f:
+        json.dump(playersData, f, indent = 4)
+
+# returns a string for printing the current leaderboard    
+def getPlayersSorted():
+    playersList = []
+    leaderboardString = ""
+    with open("players.json", 'r+') as f:
+        playersData = json.load(f)
+    for elem in playersData:
+        playersList.append([elem["ELO"], elem["username"]])
+    return sorted(playersList, reverse = True)
+    # for elem in playersList:
+    #     print(elem[1]+": " + str(elem[0]))

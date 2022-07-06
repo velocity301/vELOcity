@@ -26,7 +26,7 @@ class Game:
         self.map = random.choice(["Split", "Ascent", "Icebox", "Breeze", "Bind", "Haven", "Fracture", "Pearl"])
         self.gameID = gameID
         self.result = "waiting to start"
-class Player:
+class Player: #TODO: add discord ID and Valorant ID and rewrite registration to include these
     def __init__(self, username, ELO):
         self.username = username
         self.ELO = 1000
@@ -76,6 +76,7 @@ async def test(ctx):
 
 
 # Command to register a user in the database
+# TODO: rewrite this to get discord ID and valorant ID
 @bot.command(
     name="register",
     description="Registers a player in the database",
@@ -133,12 +134,15 @@ async def create(ctx):
     @bot.component("team1Win")
     async def button_response5(ctx):
         setGameResult("team1")
-        # setWinELO("team1", returnGameID)
+        setWinELO("team1", returnGameID()-1)
+        setLossELO("team2", returnGameID()-1)
         await ctx.edit(drawLobby(), components=[])
 
     @bot.component("team2Win")
     async def button_response5(ctx):
         setGameResult("team2")
+        setWinELO("team2", returnGameID()-1)
+        setLossELO("team1", returnGameID()-1)
         await ctx.edit(drawLobby(), components=[])
 
     @bot.component("cancelGame")
@@ -207,7 +211,25 @@ async def create(ctx):
 
     print(f"Creating lobby")
 
+# Command to display leaderboard sorted by ELO
+@bot.command(
+    name="leaderboard",
+    description="displays leaderboard of players sorted by ELO",
+    scope=ID
+)
+async def leaderboard(ctx):
+    print(getPlayersSorted())
+    playerList = getPlayersSorted()
+    leaderboard = "```"
+    for player in playerList:
+        leaderboard += player[1] + ": " +str(player[0]) + "\n"
+    leaderboard += "```"
+    await ctx.send(leaderboard)
 
+# @bot.command()
+# async def embed(ctx):
+#     embed=discord.Embed(title="Sample Embed", url="https://realdrewdata.medium.com/", description="This is an embed that will show how to build an embed and the different components", color=0xFF5733)
+#     await ctx.send(embed=embed)    
 
 # starts the bot
 bot.start()

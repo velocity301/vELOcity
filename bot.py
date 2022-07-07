@@ -26,9 +26,11 @@ class Game:
         self.map = random.choice(["Split", "Ascent", "Icebox", "Breeze", "Bind", "Haven", "Fracture", "Pearl"])
         self.gameID = gameID
         self.result = "waiting to start"
-class Player: #TODO: add discord ID and Valorant ID and rewrite registration to include these
-    def __init__(self, username, ELO):
+class Player:
+    def __init__(self, username, valorantName, discordName):
         self.username = username
+        self.valorantName = valorantName
+        self.discordName = discordName
         self.ELO = 1000
         self.wins = 0
         self.losses = 0
@@ -76,7 +78,6 @@ async def test(ctx):
 
 
 # Command to register a user in the database
-# TODO: rewrite this to get discord ID and valorant ID
 @bot.command(
     name="register",
     description="Registers a player in the database",
@@ -84,11 +85,45 @@ async def test(ctx):
 )
 async def register(ctx):
     print(f"Registering user {ctx.author.name}")
-    if (checkJson(ctx.author.name, "username", "players.json")==False):
-        writeJson(Player(ctx.author.name, 1000), "players.json")
-        await ctx.send(f"You have been registered as {ctx.author.name}")
+    registerText = interactions.TextInput(
+        style=interactions.TextStyleType.SHORT,
+        label="What is your Valorant ID? (e.g. Velocity#300)",
+        custom_id="registerForm",
+        min_length=1,
+        max_length=25
+    )
+    modal = interactions.Modal(
+        title="Registration Form",
+        custom_id="registerForm",
+        components=[registerText]
+    )
+    await ctx.popup(modal)
+
+    @bot.modal("registerForm")
+    async def modal_response(ctx, response: str):
+        if (checkJson(ctx.author.name, "username", "players.json")==False):
+            discordName = str(ctx.user) + "#" + str(ctx.user.discriminator)
+            print(discordName)
+            writeJson(Player(ctx.author.name, response, discordName), "players.json")
+            await ctx.send(f"You have been registered as: {ctx.author.name}")
+        else:
+            await ctx.send(f"You are already registered as {ctx.author.name}")
+
+# Deletes the user invoking the command from the database
+@bot.command(
+    name="deleteme",
+    description="Deletes a player in the database",
+    scope=ID
+)
+
+async def deleteme(ctx):
+    print(f"Deleting user {ctx.author.name}")
+    discordName = str(ctx.user) + "#" + str(ctx.user.discriminator)
+    if checkJson(discordName, "discordName", "players.json") == False:
+        await ctx.send(f"You are not registered")
     else:
-        await ctx.send(f"You are already registered as {ctx.author.name}")
+        deletePlayer(discordName)
+        
 
 # Command to create a lobby for people to join
 @bot.command(

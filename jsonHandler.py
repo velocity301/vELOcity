@@ -153,5 +153,13 @@ def getPlayersSorted():
     for elem in playersData:
         playersList.append([elem["ELO"], elem["username"]])
     return sorted(playersList, reverse = True)
-    # for elem in playersList:
-    #     print(elem[1]+": " + str(elem[0]))
+
+# deletes a player from the player list
+def deletePlayer(discordName):
+    with open("players.json", 'r+') as f:
+        playersData = json.load(f)
+    for elem in playersData:
+        if elem["discordName"] == discordName:
+            playersData.remove(elem)
+    with open("players.json", 'w') as f:
+        json.dump(playersData, f, indent = 4)

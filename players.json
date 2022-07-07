@@ -1,27 +1,8 @@
 [
     {
-        "username": "Zain",
-        "ELO": 1,
-        "wins": 0,
-        "losses": 0
-    },
-    {
-        "username": "Alkminion (crustless since '96)",
-        "ELO": 12,
-        "wins": 0,
-        "losses": 0
-    },
-    {
-        "username": "Kuba",
-        "ELO": 133,
-        "wins": 0,
-        "losses": 0,
-        "kills": 0,
-        "deaths": 0,
-        "assists": 0
-    },
-    {
         "username": "Velocity",
+        "valorantName": "Velocity#300",
+        "discordName": "Velocity#9534",
         "ELO": 1000,
         "wins": 0,
         "losses": 0,

@@ -188,7 +188,6 @@ async def create(ctx):
     gameID = returnGameID()
     newGame = Game(gameID)
     writeJson(newGame, "games.json")
-    print(newGame.gameID)
     incrementGameID()
 
     joinTeam1 = interactions.Button(
@@ -247,6 +246,7 @@ async def create(ctx):
     print(f"Creating lobby")
 
 # Command to display leaderboard sorted by ELO
+# TODO: Have it only display 30 ppl per page and add buttons to switch pages
 @bot.command(
     name="leaderboard",
     description="displays leaderboard of players sorted by ELO",

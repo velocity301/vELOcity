@@ -6,13 +6,14 @@ import riotAPI
 from jsonHandler import *
 
 # Open config file
-with open("config.json") as f:
-    configFile = json.load(f)
+configFile = loadJson("config.json")
+
 TOKEN = configFile['TOKEN']
 ID = int(configFile['ID'])
 print(TOKEN+" "+str(ID))
 
 bot = interactions.Client(token=TOKEN)
+
 
 # classes for storing data
 class Game:
@@ -44,7 +45,7 @@ class Player:
 @bot.command(
     name="test",
     description="testing if bot is working",
-    scope=ID,
+    scope=ID
 )
 async def test(ctx: interactions.CommandContext):
     await ctx.send("Hi there!")
@@ -73,7 +74,7 @@ async def echo(ctx: interactions.CommandContext, text: str):
     name="flame",
     scope=ID
 )
-async def test(ctx):
+async def flame(ctx):
     await ctx.send(f"{ctx.target.user.username} sucks.")
 
 
@@ -133,57 +134,90 @@ async def deleteme(ctx):
 )
 
 async def create(ctx):
-    
     @bot.component("team1")
     async def button_response1(ctx):
         addPlayerJson(ctx.author.name, "team1")
         if getLobbyHeadCount() == 10:
-            await ctx.edit(drawLobby(), components = gameControls2)
+            await ctx.edit(embeds=[interactions.Embed(
+                title = f"Game {returnGameID()-1}", 
+                description = drawLobby())], 
+                components = gameControls2
+                )
         else:
-            await ctx.edit(drawLobby(), components=gameControls)
+            await ctx.edit(embeds=[interactions.Embed(
+                title = f"Game {returnGameID()-1}",
+                description = drawLobby())], 
+                components=gameControls)
 
     @bot.component("team2")
     async def button_response2(ctx):
         addPlayerJson(ctx.author.name, "team2")
         if getLobbyHeadCount() == 10:
-            await ctx.edit(drawLobby(), components = gameControls2)
+            await ctx.edit(embeds=[interactions.Embed(
+                title = f"Game {returnGameID()-1}", 
+                description = drawLobby())], 
+                components = gameControls2
+                )
         else:
-            await ctx.edit(drawLobby(), components=gameControls)
+            await ctx.edit(embeds=[interactions.Embed(
+                title = f"Game {returnGameID()-1}",
+                description = drawLobby())], 
+                components=gameControls)
 
     @bot.component("leaveGame")
     async def button_response3(ctx):
         removePlayerJson(ctx.author.name)
         if getLobbyHeadCount() < 10:
-            await ctx.edit(drawLobby(), components = gameControls)
+            await ctx.edit(embeds=[interactions.Embed(
+                title = f"Game {returnGameID()-1}",
+                description = drawLobby())], 
+                components=gameControls)
         elif getLobbyHeadCount() == 10:
-            await ctx.edit(drawLobby(), components=gameControls2)
+            await ctx.edit(embeds=[interactions.Embed(
+                title = f"Game {returnGameID()-1}", 
+                description = drawLobby())], 
+                components = gameControls2
+                )
     
     @bot.component("startGame")
     async def button_response4(ctx):
         setGameResult("in progress")
-        gameControls=interactions.ActionRow(
-            components=[team1Win, team2Win, cancelGame]
-        )
-        await ctx.edit(drawLobby(), components=gameControls)
+        await ctx.edit(embeds=[interactions.Embed(
+                title = f"Game {returnGameID()-1}", 
+                description = drawLobby())], 
+                components = gameControls3
+                )
 
     @bot.component("team1Win")
     async def button_response5(ctx):
         setGameResult("team1")
         setWinELO("team1", returnGameID()-1)
         setLossELO("team2", returnGameID()-1)
-        await ctx.edit(drawLobby(), components=[])
+        await ctx.edit(embeds=[interactions.Embed(
+                title = f"Game {returnGameID()-1}", 
+                description = drawLobby())], 
+                components = []
+                )
 
     @bot.component("team2Win")
     async def button_response5(ctx):
         setGameResult("team2")
         setWinELO("team2", returnGameID()-1)
         setLossELO("team1", returnGameID()-1)
-        await ctx.edit(drawLobby(), components=[])
+        await ctx.edit(embeds=[interactions.Embed(
+                title = f"Game {returnGameID()-1}", 
+                description = drawLobby())], 
+                components = []
+                )
 
     @bot.component("cancelGame")
     async def button_response5(ctx):
         setGameResult("canceled")
-        await ctx.edit(drawLobby(), components=[])
+        await ctx.edit(embeds=[interactions.Embed(
+                title = f"Game {returnGameID()-1}", 
+                description = drawLobby())], 
+                components = []
+                )
 
     gameID = returnGameID()
     newGame = Game(gameID)
@@ -230,18 +264,22 @@ async def create(ctx):
     )
 
     gameControls = interactions.ActionRow(
-        components=[joinTeam1, joinTeam2, leaveGame]
+        components=[joinTeam1, joinTeam2, leaveGame, cancelGame]
     )
     
     gameControls2 = interactions.ActionRow(
-        components=[startGame, leaveGame]
+        components=[startGame, leaveGame, cancelGame]
     )
 
     gameControls3 = interactions.ActionRow(
         components=[team1Win, team2Win, cancelGame]
     )
     
-    await ctx.send(drawLobby(), components=gameControls)
+    await ctx.send(embeds=[interactions.Embed(
+                title = f"Game {returnGameID()-1}", 
+                description = drawLobby())], 
+                components = gameControls
+                )
 
     print(f"Creating lobby")
 
@@ -255,16 +293,27 @@ async def create(ctx):
 async def leaderboard(ctx):
     print(getPlayersSorted())
     playerList = getPlayersSorted()
-    leaderboard = "```"
+    column1 = ""
+    column2 = ""
     for player in playerList:
-        leaderboard += player[1] + ": " +str(player[0]) + "\n"
-    leaderboard += "```"
-    await ctx.send(leaderboard)
+        column1 += player[1] + "\n" # + ": " +str(player[0]) + "\n"
+    for player in playerList:
+        column2 += str(player[0]) + "\n"
+    leaderboardEmbed = interactions.Embed(title="Leaderboard")
+    leaderboardEmbed.add_field(name = "Player", value = column1, inline = True)
+    leaderboardEmbed.add_field(name = "ELO", value = column2, inline = True)
+    await ctx.send(embeds=[leaderboardEmbed])
 
-# @bot.command()
-# async def embed(ctx):
-#     embed=discord.Embed(title="Sample Embed", url="https://realdrewdata.medium.com/", description="This is an embed that will show how to build an embed and the different components", color=0xFF5733)
-#     await ctx.send(embed=embed)    
+@bot.command(
+    name="embedtest", 
+    description="testing embed function",
+    scope=ID
+)
+
+async def embedtest(ctx):
+    print("test before embed creation")
+    embed=interactions.Embed(title = "Test", description = "test description")
+    await ctx.send(embeds=[embed])
 
 # starts the bot
 bot.start()

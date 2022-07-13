@@ -44,12 +44,13 @@ def returnGameID():
     return fileData["gameID"] 
 
 def addPlayerJson(playerName, team):
+    removePlayerJson(playerName)
     fileData = loadJson("games.json")
     for elem in fileData: 
         if (elem["gameID"] == returnGameID()-1) and (playerName not in elem["players"]):
             if len(elem[team])<5:
                 elem["players"].append(playerName)
-                elem[team].append(playerName)
+                elem[team].append(playerName)    
     saveJson(fileData, "games.json")
 
 def removePlayerJson(playerName):
@@ -70,7 +71,7 @@ def drawLobby():
     lobbyString = "Map: "
     for elem in fileData:
         if (elem["gameID"] == returnGameID()-1):
-            lobbyString += elem["map"] + "              " + "game ID: " + str(elem["gameID"]) + "\n\n**Attackers**\n```"
+            lobbyString += elem["map"] + "\n\n**Attackers**\n```"
             if len(elem["team1"]) == 0:
                 lobbyString += "empty"
             else:
@@ -127,8 +128,7 @@ def setLossELO(team, gameID):
 # returns a string for printing the current leaderboard    
 def getPlayersSorted():
     playersList = []
-    leaderboardString = ""
-    playersData = loadJson("playersdata.json")
+    playersData = loadJson("players.json")
     for elem in playersData:
         playersList.append([elem["ELO"], elem["username"]])
     return sorted(playersList, reverse = True)

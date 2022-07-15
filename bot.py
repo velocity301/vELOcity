@@ -1,8 +1,7 @@
-import discord
 import interactions
 import json
 import random
-import riotAPI
+from valoAPI import *
 from jsonHandler import *
 
 # Open config file
@@ -193,6 +192,15 @@ async def create(ctx):
         setGameResult("team1")
         setWinELO("team1", returnGameID()-1)
         setLossELO("team2", returnGameID()-1)
+        for elem in loadJson("games.json"):
+            if elem["gameID"] == (returnGameID()-1):
+                print(elem)
+                username = elem["team1"][0]
+                print(f"found: {username}")
+        for elem in loadJson("players.json"):
+            if elem["username"] == username:
+                valorantName = elem["valorantName"]
+        saveLastGame(valorantName)
         await ctx.edit(embeds=[interactions.Embed(
                 title = f"Game {returnGameID()-1}", 
                 description = drawLobby())], 
@@ -204,6 +212,15 @@ async def create(ctx):
         setGameResult("team2")
         setWinELO("team2", returnGameID()-1)
         setLossELO("team1", returnGameID()-1)
+        for elem in loadJson("games.json"):
+            if elem["gameID"] == (returnGameID()-1):
+                print(elem)
+                username = elem["team1"][0]
+                print(f"found: {username}")
+        for elem in loadJson("players.json"):
+            if elem["username"] == username:
+                valorantName = elem["valorantName"]
+        saveLastGame(valorantName)
         await ctx.edit(embeds=[interactions.Embed(
                 title = f"Game {returnGameID()-1}", 
                 description = drawLobby())], 
@@ -303,6 +320,32 @@ async def leaderboard(ctx):
     leaderboardEmbed.add_field(name = "Player", value = column1, inline = True)
     leaderboardEmbed.add_field(name = "ELO", value = column2, inline = True)
     await ctx.send(embeds=[leaderboardEmbed])
+
+@bot.command(
+    name = "killedby",
+    description="test how many times a player has killed another",
+    scope=ID,
+    options = [
+        interactions.Option(
+            name="killer",
+            description="killer",
+            type=interactions.OptionType.STRING,
+            required=True,
+        ),
+        interactions.Option(
+            name="target",
+            description="target of kills",
+            type=interactions.OptionType.STRING,
+            required=True
+        )
+    ]
+)
+
+async def killedby(ctx, killer, target):
+    killcount = getKills(killer, target)
+    embed = interactions.Embed(title = f"{target} has been killed by {killer} {killcount} times.")
+    await ctx.send(embeds=[embed])
+
 
 @bot.command(
     name="embedtest", 

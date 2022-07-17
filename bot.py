@@ -32,11 +32,6 @@ class Player:
         self.valorantName = valorantName
         self.discordName = discordName
         self.ELO = 1000
-        self.wins = 0
-        self.losses = 0
-        self.kills = 0
-        self.deaths = 0
-        self.assists = 0
 
 #####################################################################################
 # Test command to make sure bot is working 
@@ -78,6 +73,7 @@ async def flame(ctx):
 
 
 # Command to register a user in the database
+
 @bot.command(
     name="register",
     description="Registers a player in the database",
@@ -101,13 +97,16 @@ async def register(ctx):
 
     @bot.modal("registerForm")
     async def modal_response(ctx, response: str):
-        if (checkJson(ctx.author.name, "username", "players.json")==False):
-            discordName = str(ctx.user) + "#" + str(ctx.user.discriminator)
-            print(discordName)
-            writeJson(Player(ctx.author.name, response, discordName), "players.json")
-            await ctx.send(f"You have been registered as: {ctx.author.name}")
+        if checkPlayer(response) != 200:
+            await ctx.send(f"Error finding {response} on Valorant servers.")
         else:
-            await ctx.send(f"You are already registered as {ctx.author.name}")
+            if (checkJson(ctx.author.name, "username", "players.json")==False):
+                discordName = str(ctx.user) + "#" + str(ctx.user.discriminator)
+                print(discordName)
+                writeJson(Player(ctx.author.name, response, discordName), "players.json")
+                await ctx.send(f"You have been registered as: {ctx.author.name}")
+            else:
+                await ctx.send(f"You are already registered as {ctx.author.name}")
 
 # Deletes the user invoking the command from the database
 @bot.command(
@@ -123,6 +122,7 @@ async def deleteme(ctx):
         await ctx.send(f"You are not registered")
     else:
         deletePlayer(discordName)
+        await ctx.send(f"All records for {ctx.author.name} have been deleted.")
         
 
 # Command to create a lobby for people to join
@@ -135,33 +135,39 @@ async def deleteme(ctx):
 async def create(ctx):
     @bot.component("team1")
     async def button_response1(ctx):
-        addPlayerJson(ctx.author.name, "team1")
-        if getLobbyHeadCount() == 10:
-            await ctx.edit(embeds=[interactions.Embed(
-                title = f"Game {returnGameID()-1}", 
-                description = drawLobby())], 
-                components = gameControls2
-                )
+        if checkJson(ctx.author.name, "username", "players.json") == False:
+            await ctx.send("You have to /register before you can join a game", ephemeral = True)
         else:
-            await ctx.edit(embeds=[interactions.Embed(
-                title = f"Game {returnGameID()-1}",
-                description = drawLobby())], 
-                components=gameControls)
+            addPlayerJson(ctx.author.name, "team1")
+            if getLobbyHeadCount() == 10:
+                await ctx.edit(embeds=[interactions.Embed(
+                    title = f"Game {returnGameID()-1}", 
+                    description = drawLobby())], 
+                    components = gameControls2
+                    )
+            else:
+                await ctx.edit(embeds=[interactions.Embed(
+                    title = f"Game {returnGameID()-1}",
+                    description = drawLobby())], 
+                    components=gameControls)
 
     @bot.component("team2")
     async def button_response2(ctx):
-        addPlayerJson(ctx.author.name, "team2")
-        if getLobbyHeadCount() == 10:
-            await ctx.edit(embeds=[interactions.Embed(
-                title = f"Game {returnGameID()-1}", 
-                description = drawLobby())], 
-                components = gameControls2
-                )
+        if checkJson(ctx.author.name, "username", "players.json") == False:
+            await ctx.send("You have to /register before you can join a game", ephemeral = True)
         else:
-            await ctx.edit(embeds=[interactions.Embed(
-                title = f"Game {returnGameID()-1}",
-                description = drawLobby())], 
-                components=gameControls)
+            addPlayerJson(ctx.author.name, "team2")
+            if getLobbyHeadCount() == 10:
+                await ctx.edit(embeds=[interactions.Embed(
+                    title = f"Game {returnGameID()-1}", 
+                    description = drawLobby())], 
+                    components = gameControls2
+                    )
+            else:
+                await ctx.edit(embeds=[interactions.Embed(
+                    title = f"Game {returnGameID()-1}",
+                    description = drawLobby())], 
+                    components=gameControls)
 
     @bot.component("leaveGame")
     async def button_response3(ctx):
@@ -236,8 +242,7 @@ async def create(ctx):
                 components = []
                 )
 
-    gameID = returnGameID()
-    newGame = Game(gameID)
+    newGame = Game(returnGameID())
     writeJson(newGame, "games.json")
     incrementGameID()
 

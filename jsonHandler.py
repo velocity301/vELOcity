@@ -57,7 +57,6 @@ def removePlayerJson(playerName):
     fileData = loadJson("games.json")
     for elem in fileData:
         if (elem["gameID"] == returnGameID()-1):
-            print("Found Game")
             if playerName in elem["players"]:
                 elem["players"].remove(playerName)
             if playerName in elem["team1"]:

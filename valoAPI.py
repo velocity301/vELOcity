@@ -4,6 +4,13 @@ from jsonHandler import *
 
 # response = requests.get("https://api.henrikdev.xyz/valorant/v3/matches/na/Velocity/300")
 
+# check if player exists
+def checkPlayer(valorantName):
+    name = valorantName.split("#")[0]
+    discriminator = valorantName.split("#")[1]
+    return requests.get(f"https://api.henrikdev.xyz/valorant/v1/account/{name}/{discriminator}").json()["status"]
+
+
 def getLastGame(valorantName):
     name = valorantName.split("#")[0]
     discriminator = valorantName.split("#")[1]
@@ -19,7 +26,7 @@ def getTotalKills(valorantName):
     killcount = 0
     for game in fileData:
         for kill in game["kills"]:
-            if kill["killer_display_name"] == "Velocity#300":
+            if kill["killer_display_name"] == valorantName:
                 killcount += 1
     return killcount
 

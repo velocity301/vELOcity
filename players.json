@@ -1,79 +1,44 @@
 [
     {
-        "username": "Velocity",
-        "valorantName": "Velocity#300",
-        "discordName": "Velocity#9534",
-        "ELO": 1000,
-        "wins": 0,
-        "losses": 0,
-        "kills": 0,
-        "deaths": 0,
-        "assists": 0
-    },
-    {
         "username": "Alkminion (crustless since '96)",
         "valorantName": "Alkminion#NA1",
         "discordName": "Alkminion#6897",
-        "ELO": 1000,
-        "wins": 0,
-        "losses": 0,
-        "kills": 0,
-        "deaths": 0,
-        "assists": 0
+        "ELO": 1000
     },
     {
         "username": "Aspiring 1st grader",
         "valorantName": "bibi simp#loss",
         "discordName": "binlee#9673",
-        "ELO": 1000,
-        "wins": 0,
-        "losses": 0,
-        "kills": 0,
-        "deaths": 0,
-        "assists": 0
+        "ELO": 1000
     },
     {
         "username": "Jo Mana",
         "valorantName": "Himana#NA1",
         "discordName": "Ender#8792",
-        "ELO": 1000,
-        "wins": 0,
-        "losses": 0,
-        "kills": 0,
-        "deaths": 0,
-        "assists": 0
+        "ELO": 1000
     },
     {
         "username": "Caramel Crunch Frappachino",
         "valorantName": "Feyvern#meow",
         "discordName": "Feyvern#7436",
-        "ELO": 1000,
-        "wins": 0,
-        "losses": 0,
-        "kills": 0,
-        "deaths": 0,
-        "assists": 0
+        "ELO": 1000
     },
     {
         "username": "Soupo Gobbo",
         "valorantName": "Eluvians#meow",
         "discordName": "Lina#0488",
-        "ELO": 1000,
-        "wins": 0,
-        "losses": 0,
-        "kills": 0,
-        "deaths": 0,
-        "assists": 0
+        "ELO": 1000
     },
     {
         "username": "RadPanda",
         "valorantName": "RadPandaRL#NA1",
         "discordName": "RadPanda#0001",
-        "ELO": 1000,
-        "wins": 0,
-        "losses": 0,
-        "kills": 0,
-        "deaths": 0,
-        "assists": 0
+        "ELO": 1000
+    },
+    {
+        "username": "Velocity",
+        "valorantName": "Velocity#300",
+        "discordName": "Velocity#9534",
+        "ELO": 1000
     }
 ]

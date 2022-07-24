@@ -93,7 +93,10 @@ async def register(ctx):
         custom_id="registerForm",
         components=[registerText]
     )
-    await ctx.popup(modal)
+    if checkJson(ctx.author.name, "username", "players.json") == False:
+        await ctx.popup(modal)
+    else: 
+        await ctx.send(f"You are already registered as {ctx.author.name}")
 
     @bot.modal("registerForm")
     async def modal_response(ctx, response: str):
@@ -346,6 +349,10 @@ async def leaderboard(ctx):
     ]
 )
 
+# Generate player cards
+
+
+# shows number of times killer has killed target in all games
 async def killedby(ctx, killer, target):
     killcount = getKills(killer, target)
     embed = interactions.Embed(title = f"{target} has been killed by {killer} {killcount} times.")

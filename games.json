@@ -14,5 +14,19 @@
         "team2": [],
         "map": "Haven",
         "result": "waiting to start"
+    },
+    {
+        "gameID": 22,
+        "players": [
+            "Velocity",
+            "Alkminion (crustless since '96)"
+        ],
+        "team1": [
+            "Velocity",
+            "Alkminion (crustless since '96)"
+        ],
+        "team2": [],
+        "map": "Haven",
+        "result": "canceled"
     }
 ]

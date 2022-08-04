@@ -28,5 +28,53 @@
         "team2": [],
         "map": "Haven",
         "result": "canceled"
+    },
+    {
+        "gameID": 23,
+        "players": [],
+        "team1": [],
+        "team2": [],
+        "map": "Fracture",
+        "result": "waiting to start"
+    },
+    {
+        "gameID": 24,
+        "players": [],
+        "team1": [],
+        "team2": [],
+        "map": "Ascent",
+        "result": "waiting to start"
+    },
+    {
+        "gameID": 25,
+        "players": [],
+        "team1": [],
+        "team2": [],
+        "map": "Split",
+        "result": "waiting to start"
+    },
+    {
+        "gameID": 26,
+        "players": [],
+        "team1": [],
+        "team2": [],
+        "map": "Pearl",
+        "result": "canceled"
+    },
+    {
+        "gameID": 27,
+        "players": [],
+        "team1": [],
+        "team2": [],
+        "map": "Bind",
+        "result": "waiting to start"
+    },
+    {
+        "gameID": 28,
+        "players": [],
+        "team1": [],
+        "team2": [],
+        "map": "Haven",
+        "result": "waiting to start"
     }
 ]

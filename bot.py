@@ -3,43 +3,81 @@ import json
 import random
 from valoAPI import *
 from jsonHandler import *
+import mongoDBHandler as Mongo
 
 # Open config file
 configFile = loadJson("config.json")
 
 TOKEN = configFile['TOKEN']
-ID = int(configFile['ID'])
-print(TOKEN+" "+str(ID))
+# intents = interactions.Intents(guilds = True)
+# intents.guilds = True
 
-bot = interactions.Client(token=TOKEN)
+bot = interactions.Client(token=TOKEN, intents=interactions.Intents.ALL)
 
 
 # classes for storing data
 class Game:
-    def __init__(self, gameID): 
-        with open("config.json") as f:
-            configFile = json.load(f)
-            self.gameID = configFile['gameID']
+    def __init__(self, gameID, guildID): 
         self.players = []
         self.team1 = []
         self.team2 = []
         self.map = random.choice(["Split", "Ascent", "Icebox", "Breeze", "Bind", "Haven", "Fracture", "Pearl"])
         self.gameID = gameID
         self.result = "waiting to start"
+        self.guildID = guildID
+
 class Player:
-    def __init__(self, username, valorantName, discordName):
-        self.username = username
-        self.valorantName = valorantName
+    def __init__(self, username, valorantName, discordName, guildID):
         self.discordName = discordName
-        self.ELO = 1000
+        self.valorantName = valorantName
+        self.guildInfo = [{"guildID": str(guildID), "ELO": 1000, "username": username}]
+
+# class for allowing buttons to be instanced
+# class LobbyButton:
+#     def __init__(self, _style, _label, _custom_id, guildID, gameID):
+#         self.guildID = guildID
+#         self.gameID = gameID
+#         self.buttonObject = interactions.Button(style=_style, label=_label, custom_id=_custom_id)
+        
+#         # add button functions here
+#         @bot.component("test")
+#         async def button_callback(ctx):
+#             gameControls = interactions.ActionRow(
+#                 components=[self.buttonObject])
+#             await ctx.edit(embeds=[interactions.Embed(
+#                 title = f"Game {self.guildID}, {self.gameID}", 
+#                 description = "asdf")], 
+#                 components = gameControls
+#                 )
+
 
 #####################################################################################
+### Commands ###
+
+# execute this when the bot is added to a guild
+# adds a document to the config collection 
+# with the guild ID and initializes the gameID to 1
+# TODO: try to make this work with on_guild_join instead of being a command
+@bot.command(
+    name="setup", 
+    description="run this command to create the configuration files for your server"
+)
+async def setup(ctx):
+    guildID = int(ctx.guild_id)
+    print(guildID)
+    if Mongo.countInstances("guildID", guildID, "config") > 0:
+        await ctx.send("This guild is already set up.")
+    elif Mongo.countInstances("guildID", guildID, "config") == 0:
+        Mongo.addDocument({"guildID": guildID, "gameID": 1, "currentLobby": False}, "config")
+        await ctx.send("Your guild has been initialized.")
+
+
 # Test command to make sure bot is working 
 # use "/test" in a discord channel to invoke
 @bot.command(
     name="test",
     description="testing if bot is working",
-    scope=ID
+    # scope=ID
 )
 async def test(ctx: interactions.CommandContext):
     await ctx.send("Hi there!")
@@ -48,7 +86,7 @@ async def test(ctx: interactions.CommandContext):
 @bot.command(
     name="echo",
     description="repeats a message",
-    scope=ID,
+    # scope=ID,
     options = [
         interactions.Option(
             name="text",
@@ -66,7 +104,7 @@ async def echo(ctx: interactions.CommandContext, text: str):
 @bot.command(
     type=interactions.ApplicationCommandType.USER,
     name="flame",
-    scope=ID
+    # scope=ID
 )
 async def flame(ctx):
     await ctx.send(f"{ctx.target.user.username} sucks.")
@@ -77,10 +115,12 @@ async def flame(ctx):
 @bot.command(
     name="register",
     description="Registers a player in the database",
-    scope=ID
+    # scope=ID
 )
 async def register(ctx):
-    print(f"Registering user {ctx.author.name}")
+    guildID = ctx.guild_id
+    discordName = str(ctx.user) + "#" + str(ctx.user.discriminator)
+    print(f"Registering user {discordName} in server {guildID}")
     registerText = interactions.TextInput(
         style=interactions.TextStyleType.SHORT,
         label="What is your Valorant ID? (e.g. Velocity#300)",
@@ -93,174 +133,58 @@ async def register(ctx):
         custom_id="registerForm",
         components=[registerText]
     )
-    if checkJson(ctx.author.name, "username", "players.json") == False:
+    
+    if Mongo.checkGuild(discordName, guildID) == False:
         await ctx.popup(modal)
     else: 
-        await ctx.send(f"You are already registered as {ctx.author.name}")
-
-    @bot.modal("registerForm")
-    async def modal_response(ctx, response: str):
-        if checkPlayer(response) != 200:
-            await ctx.send(f"Error finding {response} on Valorant servers.")
+        await ctx.send(f"You are already registered as {discordName}")
+@bot.modal("registerForm")
+async def modal_response(ctx, response: str):
+    guildID = ctx.guild_id
+    discordName = str(ctx.user) + "#" + str(ctx.user.discriminator)
+    if checkPlayer(response) != 200:
+        await ctx.send(f"Error finding {response} on Valorant servers.")
+    else:
+        if Mongo.checkUser(discordName) == True and Mongo.checkGuild(discordName, guildID) == False:
+            Mongo.addPlayerWithExistingGuild(discordName, guildID, ctx.author.name)
+            await ctx.send(f"You have now been registered as: {discordName}. You are also registered in other guild(s)")
         else:
-            if (checkJson(ctx.author.name, "username", "players.json")==False):
-                discordName = str(ctx.user) + "#" + str(ctx.user.discriminator)
-                print(discordName)
-                writeJson(Player(ctx.author.name, response, discordName), "players.json")
-                await ctx.send(f"You have been registered as: {ctx.author.name}")
-            else:
-                await ctx.send(f"You are already registered as {ctx.author.name}")
+            print("adding player")
+            Mongo.addDocument(Player(ctx.author.name, response, discordName, guildID).__dict__, "players")
+            print("player added")
+            await ctx.send(f"You have been registered as: {discordName}")
 
 # Deletes the user invoking the command from the database
 @bot.command(
     name="deleteme",
     description="Deletes a player in the database",
-    scope=ID
+    # scope=ID
 )
-
 async def deleteme(ctx):
-    print(f"Deleting user {ctx.author.name}")
+    guildID = ctx.guild_id
     discordName = str(ctx.user) + "#" + str(ctx.user.discriminator)
-    if checkJson(discordName, "discordName", "players.json") == False:
+    print(f"Deleting user {ctx.author.name}")
+    if Mongo.checkUser(discordName) == 0:
         await ctx.send(f"You are not registered")
     else:
-        deletePlayer(discordName)
-        await ctx.send(f"All records for {ctx.author.name} have been deleted.")
-        
+        Mongo.removeDocument("discordName", discordName, "players")
+        await ctx.send(f"All records for {discordName} have been deleted.")
 
-# Command to create a lobby for people to join
-@bot.command(
-    name="create", 
-    description="Creates a lobby for players to join",
-    scope=ID
-)
-
-async def create(ctx):
-    @bot.component("team1")
-    async def button_response1(ctx):
-        if checkJson(ctx.author.name, "username", "players.json") == False:
-            await ctx.send("You have to /register before you can join a game", ephemeral = True)
-        else:
-            addPlayerJson(ctx.author.name, "team1")
-            if getLobbyHeadCount() == 10:
-                await ctx.edit(embeds=[interactions.Embed(
-                    title = f"Game {returnGameID()-1}", 
-                    description = drawLobby())], 
-                    components = gameControls2
-                    )
-            else:
-                await ctx.edit(embeds=[interactions.Embed(
-                    title = f"Game {returnGameID()-1}",
-                    description = drawLobby())], 
-                    components=gameControls)
-
-    @bot.component("team2")
-    async def button_response2(ctx):
-        if checkJson(ctx.author.name, "username", "players.json") == False:
-            await ctx.send("You have to /register before you can join a game", ephemeral = True)
-        else:
-            addPlayerJson(ctx.author.name, "team2")
-            if getLobbyHeadCount() == 10:
-                await ctx.edit(embeds=[interactions.Embed(
-                    title = f"Game {returnGameID()-1}", 
-                    description = drawLobby())], 
-                    components = gameControls2
-                    )
-            else:
-                await ctx.edit(embeds=[interactions.Embed(
-                    title = f"Game {returnGameID()-1}",
-                    description = drawLobby())], 
-                    components=gameControls)
-
-    @bot.component("leaveGame")
-    async def button_response3(ctx):
-        removePlayerJson(ctx.author.name)
-        if getLobbyHeadCount() < 10:
-            await ctx.edit(embeds=[interactions.Embed(
-                title = f"Game {returnGameID()-1}",
-                description = drawLobby())], 
-                components=gameControls)
-        elif getLobbyHeadCount() == 10:
-            await ctx.edit(embeds=[interactions.Embed(
-                title = f"Game {returnGameID()-1}", 
-                description = drawLobby())], 
-                components = gameControls2
-                )
-    
-    @bot.component("startGame")
-    async def button_response4(ctx):
-        setGameResult("in progress")
-        await ctx.edit(embeds=[interactions.Embed(
-                title = f"Game {returnGameID()-1}", 
-                description = drawLobby())], 
-                components = gameControls3
-                )
-
-    @bot.component("team1Win")
-    async def button_response5(ctx):
-        setGameResult("team1")
-        setWinELO("team1", returnGameID()-1)
-        setLossELO("team2", returnGameID()-1)
-        for elem in loadJson("games.json"):
-            if elem["gameID"] == (returnGameID()-1):
-                print(elem)
-                username = elem["team1"][0]
-                print(f"found: {username}")
-        for elem in loadJson("players.json"):
-            if elem["username"] == username:
-                valorantName = elem["valorantName"]
-        saveLastGame(valorantName)
-        await ctx.edit(embeds=[interactions.Embed(
-                title = f"Game {returnGameID()-1}", 
-                description = drawLobby())], 
-                components = []
-                )
-
-    @bot.component("team2Win")
-    async def button_response5(ctx):
-        setGameResult("team2")
-        setWinELO("team2", returnGameID()-1)
-        setLossELO("team1", returnGameID()-1)
-        for elem in loadJson("games.json"):
-            if elem["gameID"] == (returnGameID()-1):
-                print(elem)
-                username = elem["team1"][0]
-                print(f"found: {username}")
-        for elem in loadJson("players.json"):
-            if elem["username"] == username:
-                valorantName = elem["valorantName"]
-        saveLastGame(valorantName)
-        await ctx.edit(embeds=[interactions.Embed(
-                title = f"Game {returnGameID()-1}", 
-                description = drawLobby())], 
-                components = []
-                )
-
-    @bot.component("cancelGame")
-    async def button_response5(ctx):
-        setGameResult("canceled")
-        await ctx.edit(embeds=[interactions.Embed(
-                title = f"Game {returnGameID()-1}", 
-                description = drawLobby())], 
-                components = []
-                )
-
-    newGame = Game(returnGameID())
-    writeJson(newGame, "games.json")
-    incrementGameID()
-
+  
+# Lobby controls for create command 
+def gameControls(gameStatus):
     joinTeam1 = interactions.Button(
         style=interactions.ButtonStyle.PRIMARY, 
         label="Join Attackers",
-        custom_id="team1"    
+        custom_id="joinAttackers" 
     )
     joinTeam2 = interactions.Button(
         style=interactions.ButtonStyle.PRIMARY, 
-        label="Join Defenders",
-        custom_id="team2"   
+        label="joinDefenders",
+        custom_id="joinDefenders"  
     )
     leaveGame = interactions.Button(
-        style=interactions.ButtonStyle.PRIMARY, 
+        style=interactions.ButtonStyle.SECONDARY, 
         label="Exit lobby",
         custom_id="leaveGame"   
     )
@@ -273,47 +197,171 @@ async def create(ctx):
     team1Win = interactions.Button(
         style=interactions.ButtonStyle.PRIMARY,
         label="Team 1 Wins", 
-        custom_id="team1Win"
+        custom_id="attackersWin"
     )
 
     team2Win = interactions.Button(
         style=interactions.ButtonStyle.PRIMARY,
         label="Team 2 Wins", 
-        custom_id="team2Win"
+        custom_id="defendersWin"
     )
 
     cancelGame = interactions.Button(
         style=interactions.ButtonStyle.PRIMARY,
         label="Cancel Game", 
         custom_id="cancelGame"
-    )
-
-    gameControls = interactions.ActionRow(
-        components=[joinTeam1, joinTeam2, leaveGame, cancelGame]
-    )
-    
-    gameControls2 = interactions.ActionRow(
-        components=[startGame, leaveGame, cancelGame]
-    )
-
-    gameControls3 = interactions.ActionRow(
-        components=[team1Win, team2Win, cancelGame]
-    )
-    
-    await ctx.send(embeds=[interactions.Embed(
-                title = f"Game {returnGameID()-1}", 
-                description = drawLobby())], 
-                components = gameControls
+)
+    if gameStatus == "space":
+        return [joinTeam1, joinTeam2, leaveGame, cancelGame]
+    elif gameStatus == "full":
+        return [startGame, leaveGame, cancelGame]
+    elif gameStatus == "in progress":
+        return [team1Win, team2Win, cancelGame]
+    elif gameStatus == "completed":
+        return []
+        
+# Command to create a lobby for people to join
+@bot.command(
+    name="create", 
+    description="Creates a lobby for players to join",
+    # scope=ID
+)
+async def create(ctx):
+    guildID = int(ctx.guild_id)
+    if Mongo.getCurrentLobbyStatus(guildID) == True:
+        await ctx.send("A lobby already exists")
+    elif Mongo.getCurrentLobbyStatus(guildID) == False:
+        print(Mongo.getCurrentLobbyStatus(guildID))
+        Mongo.createGame(Game(Mongo.getCurrentGameID(guildID), guildID).__dict__)
+        Mongo.setCurrentLobbyStatus(guildID, True)
+        await ctx.send(embeds=[interactions.Embed(
+                title = f"Game {Mongo.getCurrentGameID(guildID)}", 
+                description = Mongo.drawLobby(guildID, Mongo.getCurrentGameID(guildID)))], 
+                components = gameControls("space")
                 )
 
-    print(f"Creating lobby")
+
+
+@bot.component("joinAttackers")
+async def joinAttackers(ctx):
+    guildID = int(ctx.guild_id)
+    discordName = str(ctx.user) + "#" + str(ctx.user.discriminator)
+    if Mongo.checkGuild(discordName, guildID) == False:
+        await ctx.send("You have to /register before you can join a game", ephemeral = True)
+    else:
+        Mongo.addPlayerToTeam1(discordName, guildID, Mongo.getCurrentGameID(guildID))
+        if Mongo.getLobbyHeadCount(guildID, Mongo.getCurrentGameID(guildID)) == 10: 
+            await ctx.edit(embeds=[interactions.Embed(
+                title = f"Game {Mongo.getCurrentGameID(guildID)}", 
+                description = Mongo.drawLobby(guildID, Mongo.getCurrentGameID(guildID)))], 
+                components = gameControls("full")
+                )
+        else:
+            await ctx.edit(embeds=[interactions.Embed(
+                title = f"Game {Mongo.getCurrentGameID(guildID)}",
+                description = Mongo.drawLobby(guildID, Mongo.getCurrentGameID(guildID)))], 
+                components = gameControls("space")
+            )
+
+@bot.component("joinDefenders")
+async def joinDefenders(ctx):
+    guildID = int(ctx.guild_id)
+    discordName = str(ctx.user) + "#" + str(ctx.user.discriminator)
+    if Mongo.checkGuild(discordName, guildID) == False:
+        await ctx.send("You have to /register before you can join a game", ephemeral = True)
+    else:
+        Mongo.addPlayerToTeam2(discordName, guildID, Mongo.getCurrentGameID(guildID))
+        if Mongo.getLobbyHeadCount(guildID, Mongo.getCurrentGameID(guildID)) == 10: 
+            await ctx.edit(embeds=[interactions.Embed(
+                title = f"Game {Mongo.getCurrentGameID(guildID)}", 
+                description = Mongo.drawLobby(guildID, Mongo.getCurrentGameID(guildID)))], 
+                components = gameControls("full")
+                )
+        else:
+            await ctx.edit(embeds=[interactions.Embed(
+                title = f"Game {Mongo.getCurrentGameID(guildID)}",
+                description = Mongo.drawLobby(guildID, Mongo.getCurrentGameID(guildID)))], 
+                components = gameControls("space")
+            )
+@bot.component("leaveGame")
+async def leaveGame(ctx):
+    guildID = int(ctx.guild_id)
+    discordName = str(ctx.user) + "#" + str(ctx.user.discriminator) 
+    Mongo.removePlayerFromGame(discordName, guildID, Mongo.getCurrentGameID(guildID))
+    if Mongo.getLobbyHeadCount(guildID, Mongo.getCurrentGameID(guildID)) < 10:
+        await ctx.edit(embeds=[interactions.Embed(
+            title = f"Game {Mongo.getCurrentGameID(guildID)}",
+            description = Mongo.drawLobby(guildID, Mongo.getCurrentGameID(guildID)))], 
+            components = gameControls("space")
+        )
+    elif getLobbyHeadCount() == 10:
+        await ctx.edit(embeds=[interactions.Embed(
+            title = f"Game {Mongo.getCurrentGameID(guildID)-1}", 
+            description = Mongo.drawLobby(guildID, Mongo.getCurrentGameID(guildID)))], 
+            components = gameControls("full")
+            )
+
+@bot.component("startGame")
+async def startGame(ctx):
+    guildID = int(ctx.guild_id)
+    Mongo.setCurrentLobbyStatus("in progress")
+    await ctx.edit(embeds=[interactions.Embed(
+            title = f"Game {Mongo.getCurrentGameID(guildID)}", 
+            description = Mongo.drawLobby(guildID, Mongo.getCurrentGameID(guildID)))], 
+            components = gameControls("in progress")
+            )
+
+@bot.component("team1Win")
+async def team1Win(ctx):
+    guildID = int(ctx.guild_id)
+    Mongo.team1Wins(guildID, Mongo.getCurrentGameID)
+    Mongo.setCurrentLobbyStatus(guildID, "team1")
+    Mongo.incrementGameID(guildID)
+    # saveLastGame(valorantName) write function to grab first player's valorant name in lobby
+    await ctx.edit(embeds=[interactions.Embed(
+            title = f"Game {Mongo.getCurrentGameID(guildID)-1}", 
+            description = Mongo.drawLobby(guildID, Mongo.getCurrentGameID(guildID)-1))], 
+            components = []
+            )
+
+@bot.component("team2Win")
+async def team2Win(ctx):
+    guildID = int(ctx.guild_id)
+    Mongo.team2Wins(guildID, Mongo.getCurrentGameID)
+    Mongo.setCurrentLobbyStatus(guildID, "team2")
+    Mongo.incrementGameID(guildID)
+    # saveLastGame(valorantName) write function to grab first player's valorant name in lobby
+    await ctx.edit(embeds=[interactions.Embed(
+            title = f"Game {Mongo.getCurrentGameID(guildID)-1}", 
+            description = Mongo.drawLobby(guildID, Mongo.getCurrentGameID(guildID)-1))], 
+            components = []
+            )
+
+@bot.component("cancelGame")
+async def cancelGame(ctx):
+    guildID = int(ctx.guild_id)
+    Mongo.setCurrentLobbyStatus(guildID, False)
+    Mongo.incrementGameID(guildID)
+    await ctx.edit(embeds=[interactions.Embed(
+            title = f"Game {Mongo.getCurrentGameID(guildID)-1}", 
+            description = Mongo.drawLobby(guildID, Mongo.getCurrentGameID(guildID)-1))], 
+            components = []
+            )
+# TODO: write cancel command
+# @bot.command(
+#     name="cancel"
+#     description="cancels the currently active game in the server"
+# )
+
+
+
 
 # Command to display leaderboard sorted by ELO
 # TODO: Have it only display 30 ppl per page and add buttons to switch pages
 @bot.command(
     name="leaderboard",
     description="displays leaderboard of players sorted by ELO",
-    scope=ID
+    # scope=ID
 )
 async def leaderboard(ctx):
     print(getPlayersSorted())
@@ -332,7 +380,7 @@ async def leaderboard(ctx):
 @bot.command(
     name = "killedby",
     description="test how many times a player has killed another",
-    scope=ID,
+    # scope=ID,
     options = [
         interactions.Option(
             name="killer",
@@ -362,7 +410,7 @@ async def killedby(ctx, killer, target):
 @bot.command(
     name="embedtest", 
     description="testing embed function",
-    scope=ID
+    # scope=ID
 )
 
 async def embedtest(ctx):

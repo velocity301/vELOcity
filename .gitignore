@@ -129,6 +129,4 @@ dmypy.json
 .pyre/
 
 # Private Discord Token
-.config.json
-config.json
 config.json

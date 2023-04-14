@@ -114,7 +114,8 @@ def drawLobby(guildID, gameID):
     query = {"guildID": guildID, "gameID": gameID}
     result = target.find_one(query, {"_id": 0})
     # print(result["players"])
-    lobbyString = "Map: " + result["map"] + "\n**Attackers**\n```\n" 
+    #\u1CBC is an empty character
+    lobbyString = "\n**Attackers**" + "\u1CBC"*44 + "Map: " + result["map"] + "\n```\n"
     if len(result["team1"]) == 0:
         lobbyString += "empty"
     for elem in result["team1"]:
@@ -125,24 +126,7 @@ def drawLobby(guildID, gameID):
     for elem in result["team2"]:
         lobbyString += elem.split('#')[0] +"\n"
     lobbyString += "```"
-    #     if (elem["gameID"] == returnGameID()-1):
-    #         lobbyString += elem["map"] + "\n\n**Attackers**\n```"
-    #         if len(elem["team1"]) == 0:
-    #             lobbyString += "empty"
-    #         else:
-    #             lobbyString += "\n"
-    #         for player in elem["team1"]:
-    #             lobbyString += player + "\n"
-    #         lobbyString += "```\n**Defenders**\n```"
-    #         if len(elem["team2"]) == 0:
-    #             lobbyString += "empty"
-    #         else:
-    #             lobbyString += "\n"
-    #         for player in elem["team2"]:
-    #             lobbyString += player + "\n"
-    #         lobbyString += "```"
     return lobbyString
-
 
 def addPlayerToTeam1(discordName, guildID, gameID):
     if checkIfPlayerInGame(discordName, guildID, gameID) == True:

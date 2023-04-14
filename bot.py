@@ -220,7 +220,7 @@ def gameControls(gameStatus):
     )
 
     cancelGame = interactions.Button(
-        style=interactions.ButtonStyle.PRIMARY,
+        style=interactions.ButtonStyle.DANGER,
         label="Cancel Game", 
         custom_id="cancelGame"
 )

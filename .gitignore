@@ -131,3 +131,4 @@ dmypy.json
 # Private Discord Token
 .config.json
 config.json
+config.json

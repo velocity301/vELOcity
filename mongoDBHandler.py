@@ -106,24 +106,24 @@ def getLobbyHeadCount(guildID, gameID):
     target = db["games"]
     query = {"guildID": guildID, "gameID": gameID}
     result = target.find_one(query, {"players": 1, "_id": 0})
-    print(result["players"])
+    # print(result["players"])
     return len(result["players"])
 
 def drawLobby(guildID, gameID):
     target = db["games"]
     query = {"guildID": guildID, "gameID": gameID}
     result = target.find_one(query, {"_id": 0})
-    print(result["players"])
+    # print(result["players"])
     lobbyString = "Map: " + result["map"] + "\n**Attackers**\n```\n" 
     if len(result["team1"]) == 0:
         lobbyString += "empty"
     for elem in result["team1"]:
-        lobbyString += elem +"\n"
+        lobbyString += elem.split('#')[0] +"\n"
     lobbyString += "```\n**Defenders**\n```\n"
     if len(result["team2"]) == 0:
         lobbyString += "empty"
     for elem in result["team2"]:
-        lobbyString += elem +"\n"
+        lobbyString += elem.split('#')[0] +"\n"
     lobbyString += "```"
     #     if (elem["gameID"] == returnGameID()-1):
     #         lobbyString += elem["map"] + "\n\n**Attackers**\n```"

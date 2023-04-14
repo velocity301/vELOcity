@@ -64,12 +64,25 @@ class Player:
 )
 async def setup(ctx):
     guildID = int(ctx.guild_id)
-    print(guildID)
+    print(f'Setting up Guild: {guildID}')
     if Mongo.countInstances("guildID", guildID, "config") > 0:
         await ctx.send("This guild is already set up.")
     elif Mongo.countInstances("guildID", guildID, "config") == 0:
         Mongo.addDocument({"guildID": guildID, "gameID": 1, "currentLobby": False}, "config")
         await ctx.send("Your guild has been initialized.")
+
+@bot.command(
+    name="reset", 
+    description="run this command to remove the configuration files for your server"
+)
+async def reset(ctx):
+    guildID = int(ctx.guild_id)
+    print(f'Resetting guild info for Guild: {guildID}')
+    if Mongo.countInstances("guildID", guildID, "config") == 0:
+        await ctx.send("This guild has no data to reset.")
+    elif Mongo.countInstances("guildID", guildID, "config") > 0:
+        Mongo.removeDocument("guildID", guildID, "config")
+        await ctx.send("Your guild has been reset.")
 
 
 # Test command to make sure bot is working 

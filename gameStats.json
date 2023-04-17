@@ -1,1 +1,2626 @@
-[]
+[
+    {
+        "is_available": true,
+        "metadata": {
+            "map": "Ascent",
+            "game_version": "release-06.07-shipping-15-860725",
+            "game_length": 2119,
+            "game_start": 1681757883,
+            "game_start_patched": "Monday, April 17, 2023 6:58 PM",
+            "rounds_played": 18,
+            "mode": "Custom Game",
+            "queue": "Standard",
+            "season_id": "34093c29-4306-43de-452f-3f944bde22be",
+            "platform": "PC",
+            "matchid": "abf35a27-6f62-46b2-bdbc-074eddb2b084",
+            "region": "na",
+            "cluster": "US West (N. California)"
+        },
+        "players": {
+            "all_players": [
+                {
+                    "puuid": "dde7fbe5-1e4c-5110-87d4-ca0b5691e3f7",
+                    "name": "Velocity",
+                    "tag": "300",
+                    "team": "Red",
+                    "level": 148,
+                    "character": "Raze",
+                    "currenttier": 0,
+                    "currenttier_patched": "Unrated",
+                    "player_card": "5b27d2de-4a97-d6c1-76e7-669189c67072",
+                    "player_title": "bf097526-4503-6b17-2859-49a67bde66d2",
+                    "party_id": "1e29e22c-84b0-4130-89d1-cc3fedac21a2",
+                    "session_playtime": {
+                        "minutes": 15,
+                        "seconds": 900,
+                        "milliseconds": 900000
+                    },
+                    "behavior": {
+                        "afk_rounds": 0,
+                        "friendly_fire": {
+                            "incoming": 0,
+                            "outgoing": 0
+                        },
+                        "rounds_in_spawn": 1
+                    },
+                    "platform": {
+                        "type": "PC",
+                        "os": {
+                            "name": "Windows",
+                            "version": "10.0.19045.1.768.64bit"
+                        }
+                    },
+                    "ability_casts": {
+                        "c_cast": null,
+                        "q_cast": null,
+                        "e_cast": null,
+                        "x_cast": null
+                    },
+                    "assets": {
+                        "card": {
+                            "small": "https://media.valorant-api.com/playercards/5b27d2de-4a97-d6c1-76e7-669189c67072/smallart.png",
+                            "large": "https://media.valorant-api.com/playercards/5b27d2de-4a97-d6c1-76e7-669189c67072/largeart.png",
+                            "wide": "https://media.valorant-api.com/playercards/5b27d2de-4a97-d6c1-76e7-669189c67072/wideart.png"
+                        },
+                        "agent": {
+                            "small": "https://media.valorant-api.com/agents/f94c3b30-42be-e959-889c-5aa313dba261/displayicon.png",
+                            "bust": "https://media.valorant-api.com/agents/f94c3b30-42be-e959-889c-5aa313dba261/fullportrait.png",
+                            "full": "https://media.valorant-api.com/agents/f94c3b30-42be-e959-889c-5aa313dba261/fullportrait.png",
+                            "killfeed": "https://media.valorant-api.com/agents/f94c3b30-42be-e959-889c-5aa313dba261/killfeedportrait.png"
+                        }
+                    },
+                    "stats": {
+                        "score": 220,
+                        "kills": 1,
+                        "deaths": 4,
+                        "assists": 0,
+                        "bodyshots": 0,
+                        "headshots": 2,
+                        "legshots": 0
+                    },
+                    "economy": {
+                        "spent": {
+                            "overall": 0,
+                            "average": 0
+                        },
+                        "loadout_value": {
+                            "overall": 0,
+                            "average": 0
+                        }
+                    },
+                    "damage_made": 156,
+                    "damage_received": 605
+                },
+                {
+                    "puuid": "7f313cb9-e0a8-57d0-a163-4d7155a64d7c",
+                    "name": "Feyvern",
+                    "tag": "meow",
+                    "team": "Blue",
+                    "level": 209,
+                    "character": "Viper",
+                    "currenttier": 0,
+                    "currenttier_patched": "Unrated",
+                    "player_card": "6ca6c154-4ec2-3656-ce84-a79b5a29a34e",
+                    "player_title": "e79d9585-4ea7-f8f1-3d4e-31a1e2c71577",
+                    "party_id": "1e29e22c-84b0-4130-89d1-cc3fedac21a2",
+                    "session_playtime": {
+                        "minutes": 14,
+                        "seconds": 840,
+                        "milliseconds": 840000
+                    },
+                    "behavior": {
+                        "afk_rounds": 0,
+                        "friendly_fire": {
+                            "incoming": 0,
+                            "outgoing": 0
+                        },
+                        "rounds_in_spawn": 0.5
+                    },
+                    "platform": {
+                        "type": "PC",
+                        "os": {
+                            "name": "Windows",
+                            "version": "10.0.19045.1.768.64bit"
+                        }
+                    },
+                    "ability_casts": {
+                        "c_cast": 7,
+                        "q_cast": 1,
+                        "e_cast": 3,
+                        "x_cast": 0
+                    },
+                    "assets": {
+                        "card": {
+                            "small": "https://media.valorant-api.com/playercards/6ca6c154-4ec2-3656-ce84-a79b5a29a34e/smallart.png",
+                            "large": "https://media.valorant-api.com/playercards/6ca6c154-4ec2-3656-ce84-a79b5a29a34e/largeart.png",
+                            "wide": "https://media.valorant-api.com/playercards/6ca6c154-4ec2-3656-ce84-a79b5a29a34e/wideart.png"
+                        },
+                        "agent": {
+                            "small": "https://media.valorant-api.com/agents/707eab51-4836-f488-046a-cda6bf494859/displayicon.png",
+                            "bust": "https://media.valorant-api.com/agents/707eab51-4836-f488-046a-cda6bf494859/fullportrait.png",
+                            "full": "https://media.valorant-api.com/agents/707eab51-4836-f488-046a-cda6bf494859/fullportrait.png",
+                            "killfeed": "https://media.valorant-api.com/agents/707eab51-4836-f488-046a-cda6bf494859/killfeedportrait.png"
+                        }
+                    },
+                    "stats": {
+                        "score": 680,
+                        "kills": 4,
+                        "deaths": 1,
+                        "assists": 0,
+                        "bodyshots": 1,
+                        "headshots": 1,
+                        "legshots": 0
+                    },
+                    "economy": {
+                        "spent": {
+                            "overall": 12600,
+                            "average": 700
+                        },
+                        "loadout_value": {
+                            "overall": 53800,
+                            "average": 2989
+                        }
+                    },
+                    "damage_made": 605,
+                    "damage_received": 156
+                }
+            ],
+            "red": [
+                {
+                    "puuid": "dde7fbe5-1e4c-5110-87d4-ca0b5691e3f7",
+                    "name": "Velocity",
+                    "tag": "300",
+                    "team": "Red",
+                    "level": 148,
+                    "character": "Raze",
+                    "currenttier": 0,
+                    "currenttier_patched": "Unrated",
+                    "player_card": "5b27d2de-4a97-d6c1-76e7-669189c67072",
+                    "player_title": "bf097526-4503-6b17-2859-49a67bde66d2",
+                    "party_id": "1e29e22c-84b0-4130-89d1-cc3fedac21a2",
+                    "session_playtime": {
+                        "minutes": 15,
+                        "seconds": 900,
+                        "milliseconds": 900000
+                    },
+                    "behavior": {
+                        "afk_rounds": 0,
+                        "friendly_fire": {
+                            "incoming": 0,
+                            "outgoing": 0
+                        },
+                        "rounds_in_spawn": 1
+                    },
+                    "platform": {
+                        "type": "PC",
+                        "os": {
+                            "name": "Windows",
+                            "version": "10.0.19045.1.768.64bit"
+                        }
+                    },
+                    "ability_casts": {
+                        "c_cast": null,
+                        "q_cast": null,
+                        "e_cast": null,
+                        "x_cast": null
+                    },
+                    "assets": {
+                        "card": {
+                            "small": "https://media.valorant-api.com/playercards/5b27d2de-4a97-d6c1-76e7-669189c67072/smallart.png",
+                            "large": "https://media.valorant-api.com/playercards/5b27d2de-4a97-d6c1-76e7-669189c67072/largeart.png",
+                            "wide": "https://media.valorant-api.com/playercards/5b27d2de-4a97-d6c1-76e7-669189c67072/wideart.png"
+                        },
+                        "agent": {
+                            "small": "https://media.valorant-api.com/agents/f94c3b30-42be-e959-889c-5aa313dba261/displayicon.png",
+                            "bust": "https://media.valorant-api.com/agents/f94c3b30-42be-e959-889c-5aa313dba261/fullportrait.png",
+                            "full": "https://media.valorant-api.com/agents/f94c3b30-42be-e959-889c-5aa313dba261/fullportrait.png",
+                            "killfeed": "https://media.valorant-api.com/agents/f94c3b30-42be-e959-889c-5aa313dba261/killfeedportrait.png"
+                        }
+                    },
+                    "stats": {
+                        "score": 220,
+                        "kills": 1,
+                        "deaths": 4,
+                        "assists": 0,
+                        "bodyshots": 0,
+                        "headshots": 2,
+                        "legshots": 0
+                    },
+                    "economy": {
+                        "spent": {
+                            "overall": 0,
+                            "average": 0
+                        },
+                        "loadout_value": {
+                            "overall": 0,
+                            "average": 0
+                        }
+                    },
+                    "damage_made": 156,
+                    "damage_received": 605
+                }
+            ],
+            "blue": [
+                {
+                    "puuid": "7f313cb9-e0a8-57d0-a163-4d7155a64d7c",
+                    "name": "Feyvern",
+                    "tag": "meow",
+                    "team": "Blue",
+                    "level": 209,
+                    "character": "Viper",
+                    "currenttier": 0,
+                    "currenttier_patched": "Unrated",
+                    "player_card": "6ca6c154-4ec2-3656-ce84-a79b5a29a34e",
+                    "player_title": "e79d9585-4ea7-f8f1-3d4e-31a1e2c71577",
+                    "party_id": "1e29e22c-84b0-4130-89d1-cc3fedac21a2",
+                    "session_playtime": {
+                        "minutes": 14,
+                        "seconds": 840,
+                        "milliseconds": 840000
+                    },
+                    "behavior": {
+                        "afk_rounds": 0,
+                        "friendly_fire": {
+                            "incoming": 0,
+                            "outgoing": 0
+                        },
+                        "rounds_in_spawn": 0.5
+                    },
+                    "platform": {
+                        "type": "PC",
+                        "os": {
+                            "name": "Windows",
+                            "version": "10.0.19045.1.768.64bit"
+                        }
+                    },
+                    "ability_casts": {
+                        "c_cast": 7,
+                        "q_cast": 1,
+                        "e_cast": 3,
+                        "x_cast": 0
+                    },
+                    "assets": {
+                        "card": {
+                            "small": "https://media.valorant-api.com/playercards/6ca6c154-4ec2-3656-ce84-a79b5a29a34e/smallart.png",
+                            "large": "https://media.valorant-api.com/playercards/6ca6c154-4ec2-3656-ce84-a79b5a29a34e/largeart.png",
+                            "wide": "https://media.valorant-api.com/playercards/6ca6c154-4ec2-3656-ce84-a79b5a29a34e/wideart.png"
+                        },
+                        "agent": {
+                            "small": "https://media.valorant-api.com/agents/707eab51-4836-f488-046a-cda6bf494859/displayicon.png",
+                            "bust": "https://media.valorant-api.com/agents/707eab51-4836-f488-046a-cda6bf494859/fullportrait.png",
+                            "full": "https://media.valorant-api.com/agents/707eab51-4836-f488-046a-cda6bf494859/fullportrait.png",
+                            "killfeed": "https://media.valorant-api.com/agents/707eab51-4836-f488-046a-cda6bf494859/killfeedportrait.png"
+                        }
+                    },
+                    "stats": {
+                        "score": 680,
+                        "kills": 4,
+                        "deaths": 1,
+                        "assists": 0,
+                        "bodyshots": 1,
+                        "headshots": 1,
+                        "legshots": 0
+                    },
+                    "economy": {
+                        "spent": {
+                            "overall": 12600,
+                            "average": 700
+                        },
+                        "loadout_value": {
+                            "overall": 53800,
+                            "average": 2989
+                        }
+                    },
+                    "damage_made": 605,
+                    "damage_received": 156
+                }
+            ]
+        },
+        "teams": {
+            "red": {
+                "has_won": false,
+                "rounds_won": 5,
+                "rounds_lost": 13
+            },
+            "blue": {
+                "has_won": true,
+                "rounds_won": 13,
+                "rounds_lost": 5
+            }
+        },
+        "rounds": [
+            {
+                "winning_team": "Blue",
+                "end_type": "Round timer expired",
+                "bomb_planted": false,
+                "bomb_defused": false,
+                "plant_events": {
+                    "plant_location": null,
+                    "planted_by": null,
+                    "plant_site": null,
+                    "plant_time_in_round": null,
+                    "player_locations_on_plant": null
+                },
+                "defuse_events": {
+                    "defuse_location": null,
+                    "defused_by": null,
+                    "defuse_time_in_round": null,
+                    "player_locations_on_defuse": null
+                },
+                "player_stats": [
+                    {
+                        "ability_casts": {
+                            "c_casts": null,
+                            "q_casts": null,
+                            "e_cast": null,
+                            "x_cast": null
+                        },
+                        "player_puuid": "7f313cb9-e0a8-57d0-a163-4d7155a64d7c",
+                        "player_display_name": "Feyvern#meow",
+                        "player_team": "Blue",
+                        "damage_events": [],
+                        "damage": 0,
+                        "bodyshots": 0,
+                        "headshots": 0,
+                        "legshots": 0,
+                        "kill_events": [],
+                        "kills": 0,
+                        "score": 0,
+                        "economy": {
+                            "loadout_value": 600,
+                            "weapon": {
+                                "id": "29A0CFAB-485B-F5D5-779A-B59F85E204A8",
+                                "name": "Classic",
+                                "assets": {
+                                    "display_icon": "https://media.valorant-api.com/weapons/29a0cfab-485b-f5d5-779a-b59f85e204a8/displayicon.png",
+                                    "killfeed_icon": "https://media.valorant-api.com/weapons/29a0cfab-485b-f5d5-779a-b59f85e204a8/killstreamicon.png"
+                                }
+                            },
+                            "armor": {
+                                "id": null,
+                                "name": null,
+                                "assets": {
+                                    "display_icon": null
+                                }
+                            },
+                            "remaining": 200,
+                            "spent": 600
+                        },
+                        "was_afk": false,
+                        "was_penalized": false,
+                        "stayed_in_spawn": false
+                    },
+                    {
+                        "ability_casts": {
+                            "c_casts": null,
+                            "q_casts": null,
+                            "e_cast": null,
+                            "x_cast": null
+                        },
+                        "player_puuid": "dde7fbe5-1e4c-5110-87d4-ca0b5691e3f7",
+                        "player_display_name": "Velocity#300",
+                        "player_team": "Red",
+                        "damage_events": [],
+                        "damage": 0,
+                        "bodyshots": 0,
+                        "headshots": 0,
+                        "legshots": 0,
+                        "kill_events": [],
+                        "kills": 0,
+                        "score": 0,
+                        "economy": {
+                            "loadout_value": 0,
+                            "weapon": {
+                                "id": "29A0CFAB-485B-F5D5-779A-B59F85E204A8",
+                                "name": "Classic",
+                                "assets": {
+                                    "display_icon": "https://media.valorant-api.com/weapons/29a0cfab-485b-f5d5-779a-b59f85e204a8/displayicon.png",
+                                    "killfeed_icon": "https://media.valorant-api.com/weapons/29a0cfab-485b-f5d5-779a-b59f85e204a8/killstreamicon.png"
+                                }
+                            },
+                            "armor": {
+                                "id": null,
+                                "name": null,
+                                "assets": {
+                                    "display_icon": null
+                                }
+                            },
+                            "remaining": 800,
+                            "spent": 0
+                        },
+                        "was_afk": false,
+                        "was_penalized": false,
+                        "stayed_in_spawn": false
+                    }
+                ]
+            },
+            {
+                "winning_team": "Blue",
+                "end_type": "Round timer expired",
+                "bomb_planted": false,
+                "bomb_defused": false,
+                "plant_events": {
+                    "plant_location": null,
+                    "planted_by": null,
+                    "plant_site": null,
+                    "plant_time_in_round": null,
+                    "player_locations_on_plant": null
+                },
+                "defuse_events": {
+                    "defuse_location": null,
+                    "defused_by": null,
+                    "defuse_time_in_round": null,
+                    "player_locations_on_defuse": null
+                },
+                "player_stats": [
+                    {
+                        "ability_casts": {
+                            "c_casts": null,
+                            "q_casts": null,
+                            "e_cast": null,
+                            "x_cast": null
+                        },
+                        "player_puuid": "7f313cb9-e0a8-57d0-a163-4d7155a64d7c",
+                        "player_display_name": "Feyvern#meow",
+                        "player_team": "Blue",
+                        "damage_events": [],
+                        "damage": 0,
+                        "bodyshots": 0,
+                        "headshots": 0,
+                        "legshots": 0,
+                        "kill_events": [],
+                        "kills": 0,
+                        "score": 0,
+                        "economy": {
+                            "loadout_value": 1600,
+                            "weapon": {
+                                "id": "29A0CFAB-485B-F5D5-779A-B59F85E204A8",
+                                "name": "Classic",
+                                "assets": {
+                                    "display_icon": "https://media.valorant-api.com/weapons/29a0cfab-485b-f5d5-779a-b59f85e204a8/displayicon.png",
+                                    "killfeed_icon": "https://media.valorant-api.com/weapons/29a0cfab-485b-f5d5-779a-b59f85e204a8/killstreamicon.png"
+                                }
+                            },
+                            "armor": {
+                                "id": "822BCAB2-40A2-324E-C137-E09195AD7692",
+                                "name": "Heavy Shields",
+                                "assets": {
+                                    "display_icon": "https://media.valorant-api.com/gear/822bcab2-40a2-324e-c137-e09195ad7692/displayicon.png"
+                                }
+                            },
+                            "remaining": 2200,
+                            "spent": 1000
+                        },
+                        "was_afk": false,
+                        "was_penalized": false,
+                        "stayed_in_spawn": false
+                    },
+                    {
+                        "ability_casts": {
+                            "c_casts": null,
+                            "q_casts": null,
+                            "e_cast": null,
+                            "x_cast": null
+                        },
+                        "player_puuid": "dde7fbe5-1e4c-5110-87d4-ca0b5691e3f7",
+                        "player_display_name": "Velocity#300",
+                        "player_team": "Red",
+                        "damage_events": [],
+                        "damage": 0,
+                        "bodyshots": 0,
+                        "headshots": 0,
+                        "legshots": 0,
+                        "kill_events": [],
+                        "kills": 0,
+                        "score": 0,
+                        "economy": {
+                            "loadout_value": 0,
+                            "weapon": {
+                                "id": "29A0CFAB-485B-F5D5-779A-B59F85E204A8",
+                                "name": "Classic",
+                                "assets": {
+                                    "display_icon": "https://media.valorant-api.com/weapons/29a0cfab-485b-f5d5-779a-b59f85e204a8/displayicon.png",
+                                    "killfeed_icon": "https://media.valorant-api.com/weapons/29a0cfab-485b-f5d5-779a-b59f85e204a8/killstreamicon.png"
+                                }
+                            },
+                            "armor": {
+                                "id": null,
+                                "name": null,
+                                "assets": {
+                                    "display_icon": null
+                                }
+                            },
+                            "remaining": 1800,
+                            "spent": 0
+                        },
+                        "was_afk": false,
+                        "was_penalized": false,
+                        "stayed_in_spawn": false
+                    }
+                ]
+            },
+            {
+                "winning_team": "Blue",
+                "end_type": "Round timer expired",
+                "bomb_planted": false,
+                "bomb_defused": false,
+                "plant_events": {
+                    "plant_location": null,
+                    "planted_by": null,
+                    "plant_site": null,
+                    "plant_time_in_round": null,
+                    "player_locations_on_plant": null
+                },
+                "defuse_events": {
+                    "defuse_location": null,
+                    "defused_by": null,
+                    "defuse_time_in_round": null,
+                    "player_locations_on_defuse": null
+                },
+                "player_stats": [
+                    {
+                        "ability_casts": {
+                            "c_casts": null,
+                            "q_casts": null,
+                            "e_cast": null,
+                            "x_cast": null
+                        },
+                        "player_puuid": "7f313cb9-e0a8-57d0-a163-4d7155a64d7c",
+                        "player_display_name": "Feyvern#meow",
+                        "player_team": "Blue",
+                        "damage_events": [],
+                        "damage": 0,
+                        "bodyshots": 0,
+                        "headshots": 0,
+                        "legshots": 0,
+                        "kill_events": [],
+                        "kills": 0,
+                        "score": 0,
+                        "economy": {
+                            "loadout_value": 1400,
+                            "weapon": {
+                                "id": "29A0CFAB-485B-F5D5-779A-B59F85E204A8",
+                                "name": "Classic",
+                                "assets": {
+                                    "display_icon": "https://media.valorant-api.com/weapons/29a0cfab-485b-f5d5-779a-b59f85e204a8/displayicon.png",
+                                    "killfeed_icon": "https://media.valorant-api.com/weapons/29a0cfab-485b-f5d5-779a-b59f85e204a8/killstreamicon.png"
+                                }
+                            },
+                            "armor": {
+                                "id": "822BCAB2-40A2-324E-C137-E09195AD7692",
+                                "name": "Heavy Shields",
+                                "assets": {
+                                    "display_icon": "https://media.valorant-api.com/gear/822bcab2-40a2-324e-c137-e09195ad7692/displayicon.png"
+                                }
+                            },
+                            "remaining": 5200,
+                            "spent": 0
+                        },
+                        "was_afk": false,
+                        "was_penalized": false,
+                        "stayed_in_spawn": false
+                    },
+                    {
+                        "ability_casts": {
+                            "c_casts": null,
+                            "q_casts": null,
+                            "e_cast": null,
+                            "x_cast": null
+                        },
+                        "player_puuid": "dde7fbe5-1e4c-5110-87d4-ca0b5691e3f7",
+                        "player_display_name": "Velocity#300",
+                        "player_team": "Red",
+                        "damage_events": [],
+                        "damage": 0,
+                        "bodyshots": 0,
+                        "headshots": 0,
+                        "legshots": 0,
+                        "kill_events": [],
+                        "kills": 0,
+                        "score": 0,
+                        "economy": {
+                            "loadout_value": 0,
+                            "weapon": {
+                                "id": "29A0CFAB-485B-F5D5-779A-B59F85E204A8",
+                                "name": "Classic",
+                                "assets": {
+                                    "display_icon": "https://media.valorant-api.com/weapons/29a0cfab-485b-f5d5-779a-b59f85e204a8/displayicon.png",
+                                    "killfeed_icon": "https://media.valorant-api.com/weapons/29a0cfab-485b-f5d5-779a-b59f85e204a8/killstreamicon.png"
+                                }
+                            },
+                            "armor": {
+                                "id": null,
+                                "name": null,
+                                "assets": {
+                                    "display_icon": null
+                                }
+                            },
+                            "remaining": 2800,
+                            "spent": 0
+                        },
+                        "was_afk": false,
+                        "was_penalized": false,
+                        "stayed_in_spawn": false
+                    }
+                ]
+            },
+            {
+                "winning_team": "Blue",
+                "end_type": "Round timer expired",
+                "bomb_planted": false,
+                "bomb_defused": false,
+                "plant_events": {
+                    "plant_location": null,
+                    "planted_by": null,
+                    "plant_site": null,
+                    "plant_time_in_round": null,
+                    "player_locations_on_plant": null
+                },
+                "defuse_events": {
+                    "defuse_location": null,
+                    "defused_by": null,
+                    "defuse_time_in_round": null,
+                    "player_locations_on_defuse": null
+                },
+                "player_stats": [
+                    {
+                        "ability_casts": {
+                            "c_casts": null,
+                            "q_casts": null,
+                            "e_cast": null,
+                            "x_cast": null
+                        },
+                        "player_puuid": "7f313cb9-e0a8-57d0-a163-4d7155a64d7c",
+                        "player_display_name": "Feyvern#meow",
+                        "player_team": "Blue",
+                        "damage_events": [],
+                        "damage": 0,
+                        "bodyshots": 0,
+                        "headshots": 0,
+                        "legshots": 0,
+                        "kill_events": [],
+                        "kills": 0,
+                        "score": 0,
+                        "economy": {
+                            "loadout_value": 1400,
+                            "weapon": {
+                                "id": "29A0CFAB-485B-F5D5-779A-B59F85E204A8",
+                                "name": "Classic",
+                                "assets": {
+                                    "display_icon": "https://media.valorant-api.com/weapons/29a0cfab-485b-f5d5-779a-b59f85e204a8/displayicon.png",
+                                    "killfeed_icon": "https://media.valorant-api.com/weapons/29a0cfab-485b-f5d5-779a-b59f85e204a8/killstreamicon.png"
+                                }
+                            },
+                            "armor": {
+                                "id": "822BCAB2-40A2-324E-C137-E09195AD7692",
+                                "name": "Heavy Shields",
+                                "assets": {
+                                    "display_icon": "https://media.valorant-api.com/gear/822bcab2-40a2-324e-c137-e09195ad7692/displayicon.png"
+                                }
+                            },
+                            "remaining": 8200,
+                            "spent": 0
+                        },
+                        "was_afk": false,
+                        "was_penalized": false,
+                        "stayed_in_spawn": false
+                    },
+                    {
+                        "ability_casts": {
+                            "c_casts": null,
+                            "q_casts": null,
+                            "e_cast": null,
+                            "x_cast": null
+                        },
+                        "player_puuid": "dde7fbe5-1e4c-5110-87d4-ca0b5691e3f7",
+                        "player_display_name": "Velocity#300",
+                        "player_team": "Red",
+                        "damage_events": [],
+                        "damage": 0,
+                        "bodyshots": 0,
+                        "headshots": 0,
+                        "legshots": 0,
+                        "kill_events": [],
+                        "kills": 0,
+                        "score": 0,
+                        "economy": {
+                            "loadout_value": 0,
+                            "weapon": {
+                                "id": "29A0CFAB-485B-F5D5-779A-B59F85E204A8",
+                                "name": "Classic",
+                                "assets": {
+                                    "display_icon": "https://media.valorant-api.com/weapons/29a0cfab-485b-f5d5-779a-b59f85e204a8/displayicon.png",
+                                    "killfeed_icon": "https://media.valorant-api.com/weapons/29a0cfab-485b-f5d5-779a-b59f85e204a8/killstreamicon.png"
+                                }
+                            },
+                            "armor": {
+                                "id": null,
+                                "name": null,
+                                "assets": {
+                                    "display_icon": null
+                                }
+                            },
+                            "remaining": 3800,
+                            "spent": 0
+                        },
+                        "was_afk": false,
+                        "was_penalized": false,
+                        "stayed_in_spawn": false
+                    }
+                ]
+            },
+            {
+                "winning_team": "Blue",
+                "end_type": "Round timer expired",
+                "bomb_planted": false,
+                "bomb_defused": false,
+                "plant_events": {
+                    "plant_location": null,
+                    "planted_by": null,
+                    "plant_site": null,
+                    "plant_time_in_round": null,
+                    "player_locations_on_plant": null
+                },
+                "defuse_events": {
+                    "defuse_location": null,
+                    "defused_by": null,
+                    "defuse_time_in_round": null,
+                    "player_locations_on_defuse": null
+                },
+                "player_stats": [
+                    {
+                        "ability_casts": {
+                            "c_casts": null,
+                            "q_casts": null,
+                            "e_cast": null,
+                            "x_cast": null
+                        },
+                        "player_puuid": "7f313cb9-e0a8-57d0-a163-4d7155a64d7c",
+                        "player_display_name": "Feyvern#meow",
+                        "player_team": "Blue",
+                        "damage_events": [],
+                        "damage": 0,
+                        "bodyshots": 0,
+                        "headshots": 0,
+                        "legshots": 0,
+                        "kill_events": [],
+                        "kills": 0,
+                        "score": 0,
+                        "economy": {
+                            "loadout_value": 1400,
+                            "weapon": {
+                                "id": "29A0CFAB-485B-F5D5-779A-B59F85E204A8",
+                                "name": "Classic",
+                                "assets": {
+                                    "display_icon": "https://media.valorant-api.com/weapons/29a0cfab-485b-f5d5-779a-b59f85e204a8/displayicon.png",
+                                    "killfeed_icon": "https://media.valorant-api.com/weapons/29a0cfab-485b-f5d5-779a-b59f85e204a8/killstreamicon.png"
+                                }
+                            },
+                            "armor": {
+                                "id": "822BCAB2-40A2-324E-C137-E09195AD7692",
+                                "name": "Heavy Shields",
+                                "assets": {
+                                    "display_icon": "https://media.valorant-api.com/gear/822bcab2-40a2-324e-c137-e09195ad7692/displayicon.png"
+                                }
+                            },
+                            "remaining": 9000,
+                            "spent": 0
+                        },
+                        "was_afk": false,
+                        "was_penalized": false,
+                        "stayed_in_spawn": false
+                    },
+                    {
+                        "ability_casts": {
+                            "c_casts": null,
+                            "q_casts": null,
+                            "e_cast": null,
+                            "x_cast": null
+                        },
+                        "player_puuid": "dde7fbe5-1e4c-5110-87d4-ca0b5691e3f7",
+                        "player_display_name": "Velocity#300",
+                        "player_team": "Red",
+                        "damage_events": [],
+                        "damage": 0,
+                        "bodyshots": 0,
+                        "headshots": 0,
+                        "legshots": 0,
+                        "kill_events": [],
+                        "kills": 0,
+                        "score": 0,
+                        "economy": {
+                            "loadout_value": 0,
+                            "weapon": {
+                                "id": "29A0CFAB-485B-F5D5-779A-B59F85E204A8",
+                                "name": "Classic",
+                                "assets": {
+                                    "display_icon": "https://media.valorant-api.com/weapons/29a0cfab-485b-f5d5-779a-b59f85e204a8/displayicon.png",
+                                    "killfeed_icon": "https://media.valorant-api.com/weapons/29a0cfab-485b-f5d5-779a-b59f85e204a8/killstreamicon.png"
+                                }
+                            },
+                            "armor": {
+                                "id": null,
+                                "name": null,
+                                "assets": {
+                                    "display_icon": null
+                                }
+                            },
+                            "remaining": 4800,
+                            "spent": 0
+                        },
+                        "was_afk": false,
+                        "was_penalized": false,
+                        "stayed_in_spawn": false
+                    }
+                ]
+            },
+            {
+                "winning_team": "Red",
+                "end_type": "Eliminated",
+                "bomb_planted": false,
+                "bomb_defused": false,
+                "plant_events": {
+                    "plant_location": null,
+                    "planted_by": null,
+                    "plant_site": null,
+                    "plant_time_in_round": null,
+                    "player_locations_on_plant": null
+                },
+                "defuse_events": {
+                    "defuse_location": null,
+                    "defused_by": null,
+                    "defuse_time_in_round": null,
+                    "player_locations_on_defuse": null
+                },
+                "player_stats": [
+                    {
+                        "ability_casts": {
+                            "c_casts": null,
+                            "q_casts": null,
+                            "e_cast": null,
+                            "x_cast": null
+                        },
+                        "player_puuid": "7f313cb9-e0a8-57d0-a163-4d7155a64d7c",
+                        "player_display_name": "Feyvern#meow",
+                        "player_team": "Blue",
+                        "damage_events": [],
+                        "damage": 0,
+                        "bodyshots": 0,
+                        "headshots": 0,
+                        "legshots": 0,
+                        "kill_events": [],
+                        "kills": 0,
+                        "score": 0,
+                        "economy": {
+                            "loadout_value": 1600,
+                            "weapon": {
+                                "id": "29A0CFAB-485B-F5D5-779A-B59F85E204A8",
+                                "name": "Classic",
+                                "assets": {
+                                    "display_icon": "https://media.valorant-api.com/weapons/29a0cfab-485b-f5d5-779a-b59f85e204a8/displayicon.png",
+                                    "killfeed_icon": "https://media.valorant-api.com/weapons/29a0cfab-485b-f5d5-779a-b59f85e204a8/killstreamicon.png"
+                                }
+                            },
+                            "armor": {
+                                "id": "822BCAB2-40A2-324E-C137-E09195AD7692",
+                                "name": "Heavy Shields",
+                                "assets": {
+                                    "display_icon": "https://media.valorant-api.com/gear/822bcab2-40a2-324e-c137-e09195ad7692/displayicon.png"
+                                }
+                            },
+                            "remaining": 8600,
+                            "spent": 400
+                        },
+                        "was_afk": false,
+                        "was_penalized": false,
+                        "stayed_in_spawn": false
+                    },
+                    {
+                        "ability_casts": {
+                            "c_casts": null,
+                            "q_casts": null,
+                            "e_cast": null,
+                            "x_cast": null
+                        },
+                        "player_puuid": "dde7fbe5-1e4c-5110-87d4-ca0b5691e3f7",
+                        "player_display_name": "Velocity#300",
+                        "player_team": "Red",
+                        "damage_events": [
+                            {
+                                "receiver_puuid": "7f313cb9-e0a8-57d0-a163-4d7155a64d7c",
+                                "receiver_display_name": "Feyvern#meow",
+                                "receiver_team": "Blue",
+                                "bodyshots": 0,
+                                "damage": 156,
+                                "headshots": 2,
+                                "legshots": 0
+                            }
+                        ],
+                        "damage": 156,
+                        "bodyshots": 0,
+                        "headshots": 2,
+                        "legshots": 0,
+                        "kill_events": [
+                            {
+                                "kill_time_in_round": 31493,
+                                "kill_time_in_match": 771655,
+                                "killer_puuid": "dde7fbe5-1e4c-5110-87d4-ca0b5691e3f7",
+                                "killer_display_name": "Velocity#300",
+                                "killer_team": "Red",
+                                "victim_puuid": "7f313cb9-e0a8-57d0-a163-4d7155a64d7c",
+                                "victim_display_name": "Feyvern#meow",
+                                "victim_team": "Blue",
+                                "victim_death_location": {
+                                    "x": 1157,
+                                    "y": -750
+                                },
+                                "damage_weapon_id": "29A0CFAB-485B-F5D5-779A-B59F85E204A8",
+                                "damage_weapon_name": "Classic",
+                                "damage_weapon_assets": {
+                                    "display_icon": "https://media.valorant-api.com/weapons/29a0cfab-485b-f5d5-779a-b59f85e204a8/displayicon.png",
+                                    "killfeed_icon": "https://media.valorant-api.com/weapons/29a0cfab-485b-f5d5-779a-b59f85e204a8/killstreamicon.png"
+                                },
+                                "secondary_fire_mode": false,
+                                "player_locations_on_kill": [
+                                    {
+                                        "player_puuid": "dde7fbe5-1e4c-5110-87d4-ca0b5691e3f7",
+                                        "player_display_name": "Velocity#300",
+                                        "player_team": "Red",
+                                        "location": {
+                                            "x": -360,
+                                            "y": 978
+                                        },
+                                        "view_radians": 5.428854
+                                    }
+                                ],
+                                "assistants": []
+                            }
+                        ],
+                        "kills": 1,
+                        "score": 220,
+                        "economy": {
+                            "loadout_value": 0,
+                            "weapon": {
+                                "id": "29A0CFAB-485B-F5D5-779A-B59F85E204A8",
+                                "name": "Classic",
+                                "assets": {
+                                    "display_icon": "https://media.valorant-api.com/weapons/29a0cfab-485b-f5d5-779a-b59f85e204a8/displayicon.png",
+                                    "killfeed_icon": "https://media.valorant-api.com/weapons/29a0cfab-485b-f5d5-779a-b59f85e204a8/killstreamicon.png"
+                                }
+                            },
+                            "armor": {
+                                "id": null,
+                                "name": null,
+                                "assets": {
+                                    "display_icon": null
+                                }
+                            },
+                            "remaining": 5800,
+                            "spent": 0
+                        },
+                        "was_afk": false,
+                        "was_penalized": false,
+                        "stayed_in_spawn": false
+                    }
+                ]
+            },
+            {
+                "winning_team": "Blue",
+                "end_type": "Eliminated",
+                "bomb_planted": false,
+                "bomb_defused": false,
+                "plant_events": {
+                    "plant_location": null,
+                    "planted_by": null,
+                    "plant_site": null,
+                    "plant_time_in_round": null,
+                    "player_locations_on_plant": null
+                },
+                "defuse_events": {
+                    "defuse_location": null,
+                    "defused_by": null,
+                    "defuse_time_in_round": null,
+                    "player_locations_on_defuse": null
+                },
+                "player_stats": [
+                    {
+                        "ability_casts": {
+                            "c_casts": null,
+                            "q_casts": null,
+                            "e_cast": null,
+                            "x_cast": null
+                        },
+                        "player_puuid": "7f313cb9-e0a8-57d0-a163-4d7155a64d7c",
+                        "player_display_name": "Feyvern#meow",
+                        "player_team": "Blue",
+                        "damage_events": [
+                            {
+                                "receiver_puuid": "dde7fbe5-1e4c-5110-87d4-ca0b5691e3f7",
+                                "receiver_display_name": "Velocity#300",
+                                "receiver_team": "Red",
+                                "bodyshots": 0,
+                                "damage": 100,
+                                "headshots": 0,
+                                "legshots": 0
+                            }
+                        ],
+                        "damage": 100,
+                        "bodyshots": 0,
+                        "headshots": 0,
+                        "legshots": 0,
+                        "kill_events": [
+                            {
+                                "kill_time_in_round": 18820,
+                                "kill_time_in_match": 827500,
+                                "killer_puuid": "7f313cb9-e0a8-57d0-a163-4d7155a64d7c",
+                                "killer_display_name": "Feyvern#meow",
+                                "killer_team": "Blue",
+                                "victim_puuid": "dde7fbe5-1e4c-5110-87d4-ca0b5691e3f7",
+                                "victim_display_name": "Velocity#300",
+                                "victim_team": "Red",
+                                "victim_death_location": {
+                                    "x": 349,
+                                    "y": 1167
+                                },
+                                "damage_weapon_id": "GrenadeAbility",
+                                "damage_weapon_name": null,
+                                "damage_weapon_assets": {
+                                    "display_icon": null,
+                                    "killfeed_icon": null
+                                },
+                                "secondary_fire_mode": false,
+                                "player_locations_on_kill": [
+                                    {
+                                        "player_puuid": "7f313cb9-e0a8-57d0-a163-4d7155a64d7c",
+                                        "player_display_name": "Feyvern#meow",
+                                        "player_team": "Blue",
+                                        "location": {
+                                            "x": 3581,
+                                            "y": -1140
+                                        },
+                                        "view_radians": 2.643624
+                                    }
+                                ],
+                                "assistants": []
+                            }
+                        ],
+                        "kills": 1,
+                        "score": 170,
+                        "economy": {
+                            "loadout_value": 6300,
+                            "weapon": {
+                                "id": "A03B24D3-4319-996D-0F8C-94BBFBA1DFC7",
+                                "name": "Operator",
+                                "assets": {
+                                    "display_icon": "https://media.valorant-api.com/weapons/a03b24d3-4319-996d-0f8c-94bbfba1dfc7/displayicon.png",
+                                    "killfeed_icon": "https://media.valorant-api.com/weapons/a03b24d3-4319-996d-0f8c-94bbfba1dfc7/killstreamicon.png"
+                                }
+                            },
+                            "armor": {
+                                "id": "822BCAB2-40A2-324E-C137-E09195AD7692",
+                                "name": "Heavy Shields",
+                                "assets": {
+                                    "display_icon": "https://media.valorant-api.com/gear/822bcab2-40a2-324e-c137-e09195ad7692/displayicon.png"
+                                }
+                            },
+                            "remaining": 3100,
+                            "spent": 5900
+                        },
+                        "was_afk": false,
+                        "was_penalized": false,
+                        "stayed_in_spawn": false
+                    },
+                    {
+                        "ability_casts": {
+                            "c_casts": null,
+                            "q_casts": null,
+                            "e_cast": null,
+                            "x_cast": null
+                        },
+                        "player_puuid": "dde7fbe5-1e4c-5110-87d4-ca0b5691e3f7",
+                        "player_display_name": "Velocity#300",
+                        "player_team": "Red",
+                        "damage_events": [],
+                        "damage": 0,
+                        "bodyshots": 0,
+                        "headshots": 0,
+                        "legshots": 0,
+                        "kill_events": [],
+                        "kills": 0,
+                        "score": 0,
+                        "economy": {
+                            "loadout_value": 0,
+                            "weapon": {
+                                "id": "29A0CFAB-485B-F5D5-779A-B59F85E204A8",
+                                "name": "Classic",
+                                "assets": {
+                                    "display_icon": "https://media.valorant-api.com/weapons/29a0cfab-485b-f5d5-779a-b59f85e204a8/displayicon.png",
+                                    "killfeed_icon": "https://media.valorant-api.com/weapons/29a0cfab-485b-f5d5-779a-b59f85e204a8/killstreamicon.png"
+                                }
+                            },
+                            "armor": {
+                                "id": null,
+                                "name": null,
+                                "assets": {
+                                    "display_icon": null
+                                }
+                            },
+                            "remaining": 9000,
+                            "spent": 0
+                        },
+                        "was_afk": false,
+                        "was_penalized": false,
+                        "stayed_in_spawn": false
+                    }
+                ]
+            },
+            {
+                "winning_team": "Blue",
+                "end_type": "Eliminated",
+                "bomb_planted": false,
+                "bomb_defused": false,
+                "plant_events": {
+                    "plant_location": null,
+                    "planted_by": null,
+                    "plant_site": null,
+                    "plant_time_in_round": null,
+                    "player_locations_on_plant": null
+                },
+                "defuse_events": {
+                    "defuse_location": null,
+                    "defused_by": null,
+                    "defuse_time_in_round": null,
+                    "player_locations_on_defuse": null
+                },
+                "player_stats": [
+                    {
+                        "ability_casts": {
+                            "c_casts": null,
+                            "q_casts": null,
+                            "e_cast": null,
+                            "x_cast": null
+                        },
+                        "player_puuid": "7f313cb9-e0a8-57d0-a163-4d7155a64d7c",
+                        "player_display_name": "Feyvern#meow",
+                        "player_team": "Blue",
+                        "damage_events": [
+                            {
+                                "receiver_puuid": "dde7fbe5-1e4c-5110-87d4-ca0b5691e3f7",
+                                "receiver_display_name": "Velocity#300",
+                                "receiver_team": "Red",
+                                "bodyshots": 0,
+                                "damage": 255,
+                                "headshots": 1,
+                                "legshots": 0
+                            }
+                        ],
+                        "damage": 255,
+                        "bodyshots": 0,
+                        "headshots": 1,
+                        "legshots": 0,
+                        "kill_events": [
+                            {
+                                "kill_time_in_round": 16781,
+                                "kill_time_in_match": 881315,
+                                "killer_puuid": "7f313cb9-e0a8-57d0-a163-4d7155a64d7c",
+                                "killer_display_name": "Feyvern#meow",
+                                "killer_team": "Blue",
+                                "victim_puuid": "dde7fbe5-1e4c-5110-87d4-ca0b5691e3f7",
+                                "victim_display_name": "Velocity#300",
+                                "victim_team": "Red",
+                                "victim_death_location": {
+                                    "x": -360,
+                                    "y": 978
+                                },
+                                "damage_weapon_id": "A03B24D3-4319-996D-0F8C-94BBFBA1DFC7",
+                                "damage_weapon_name": "Operator",
+                                "damage_weapon_assets": {
+                                    "display_icon": "https://media.valorant-api.com/weapons/a03b24d3-4319-996d-0f8c-94bbfba1dfc7/displayicon.png",
+                                    "killfeed_icon": "https://media.valorant-api.com/weapons/a03b24d3-4319-996d-0f8c-94bbfba1dfc7/killstreamicon.png"
+                                },
+                                "secondary_fire_mode": true,
+                                "player_locations_on_kill": [
+                                    {
+                                        "player_puuid": "7f313cb9-e0a8-57d0-a163-4d7155a64d7c",
+                                        "player_display_name": "Feyvern#meow",
+                                        "player_team": "Blue",
+                                        "location": {
+                                            "x": 3562,
+                                            "y": -1192
+                                        },
+                                        "view_radians": 2.6378717
+                                    }
+                                ],
+                                "assistants": []
+                            }
+                        ],
+                        "kills": 1,
+                        "score": 170,
+                        "economy": {
+                            "loadout_value": 6300,
+                            "weapon": {
+                                "id": "A03B24D3-4319-996D-0F8C-94BBFBA1DFC7",
+                                "name": "Operator",
+                                "assets": {
+                                    "display_icon": "https://media.valorant-api.com/weapons/a03b24d3-4319-996d-0f8c-94bbfba1dfc7/displayicon.png",
+                                    "killfeed_icon": "https://media.valorant-api.com/weapons/a03b24d3-4319-996d-0f8c-94bbfba1dfc7/killstreamicon.png"
+                                }
+                            },
+                            "armor": {
+                                "id": "822BCAB2-40A2-324E-C137-E09195AD7692",
+                                "name": "Heavy Shields",
+                                "assets": {
+                                    "display_icon": "https://media.valorant-api.com/gear/822bcab2-40a2-324e-c137-e09195ad7692/displayicon.png"
+                                }
+                            },
+                            "remaining": 6100,
+                            "spent": 200
+                        },
+                        "was_afk": false,
+                        "was_penalized": false,
+                        "stayed_in_spawn": false
+                    },
+                    {
+                        "ability_casts": {
+                            "c_casts": null,
+                            "q_casts": null,
+                            "e_cast": null,
+                            "x_cast": null
+                        },
+                        "player_puuid": "dde7fbe5-1e4c-5110-87d4-ca0b5691e3f7",
+                        "player_display_name": "Velocity#300",
+                        "player_team": "Red",
+                        "damage_events": [],
+                        "damage": 0,
+                        "bodyshots": 0,
+                        "headshots": 0,
+                        "legshots": 0,
+                        "kill_events": [],
+                        "kills": 0,
+                        "score": 0,
+                        "economy": {
+                            "loadout_value": 0,
+                            "weapon": {
+                                "id": "29A0CFAB-485B-F5D5-779A-B59F85E204A8",
+                                "name": "Classic",
+                                "assets": {
+                                    "display_icon": "https://media.valorant-api.com/weapons/29a0cfab-485b-f5d5-779a-b59f85e204a8/displayicon.png",
+                                    "killfeed_icon": "https://media.valorant-api.com/weapons/29a0cfab-485b-f5d5-779a-b59f85e204a8/killstreamicon.png"
+                                }
+                            },
+                            "armor": {
+                                "id": null,
+                                "name": null,
+                                "assets": {
+                                    "display_icon": null
+                                }
+                            },
+                            "remaining": 9000,
+                            "spent": 0
+                        },
+                        "was_afk": false,
+                        "was_penalized": false,
+                        "stayed_in_spawn": false
+                    }
+                ]
+            },
+            {
+                "winning_team": "Blue",
+                "end_type": "Round timer expired",
+                "bomb_planted": false,
+                "bomb_defused": false,
+                "plant_events": {
+                    "plant_location": null,
+                    "planted_by": null,
+                    "plant_site": null,
+                    "plant_time_in_round": null,
+                    "player_locations_on_plant": null
+                },
+                "defuse_events": {
+                    "defuse_location": null,
+                    "defused_by": null,
+                    "defuse_time_in_round": null,
+                    "player_locations_on_defuse": null
+                },
+                "player_stats": [
+                    {
+                        "ability_casts": {
+                            "c_casts": null,
+                            "q_casts": null,
+                            "e_cast": null,
+                            "x_cast": null
+                        },
+                        "player_puuid": "7f313cb9-e0a8-57d0-a163-4d7155a64d7c",
+                        "player_display_name": "Feyvern#meow",
+                        "player_team": "Blue",
+                        "damage_events": [],
+                        "damage": 0,
+                        "bodyshots": 0,
+                        "headshots": 0,
+                        "legshots": 0,
+                        "kill_events": [],
+                        "kills": 0,
+                        "score": 0,
+                        "economy": {
+                            "loadout_value": 6100,
+                            "weapon": {
+                                "id": "A03B24D3-4319-996D-0F8C-94BBFBA1DFC7",
+                                "name": "Operator",
+                                "assets": {
+                                    "display_icon": "https://media.valorant-api.com/weapons/a03b24d3-4319-996d-0f8c-94bbfba1dfc7/displayicon.png",
+                                    "killfeed_icon": "https://media.valorant-api.com/weapons/a03b24d3-4319-996d-0f8c-94bbfba1dfc7/killstreamicon.png"
+                                }
+                            },
+                            "armor": {
+                                "id": "822BCAB2-40A2-324E-C137-E09195AD7692",
+                                "name": "Heavy Shields",
+                                "assets": {
+                                    "display_icon": "https://media.valorant-api.com/gear/822bcab2-40a2-324e-c137-e09195ad7692/displayicon.png"
+                                }
+                            },
+                            "remaining": 9000,
+                            "spent": 0
+                        },
+                        "was_afk": false,
+                        "was_penalized": false,
+                        "stayed_in_spawn": false
+                    },
+                    {
+                        "ability_casts": {
+                            "c_casts": null,
+                            "q_casts": null,
+                            "e_cast": null,
+                            "x_cast": null
+                        },
+                        "player_puuid": "dde7fbe5-1e4c-5110-87d4-ca0b5691e3f7",
+                        "player_display_name": "Velocity#300",
+                        "player_team": "Red",
+                        "damage_events": [],
+                        "damage": 0,
+                        "bodyshots": 0,
+                        "headshots": 0,
+                        "legshots": 0,
+                        "kill_events": [],
+                        "kills": 0,
+                        "score": 0,
+                        "economy": {
+                            "loadout_value": 0,
+                            "weapon": {
+                                "id": "29A0CFAB-485B-F5D5-779A-B59F85E204A8",
+                                "name": "Classic",
+                                "assets": {
+                                    "display_icon": "https://media.valorant-api.com/weapons/29a0cfab-485b-f5d5-779a-b59f85e204a8/displayicon.png",
+                                    "killfeed_icon": "https://media.valorant-api.com/weapons/29a0cfab-485b-f5d5-779a-b59f85e204a8/killstreamicon.png"
+                                }
+                            },
+                            "armor": {
+                                "id": null,
+                                "name": null,
+                                "assets": {
+                                    "display_icon": null
+                                }
+                            },
+                            "remaining": 9000,
+                            "spent": 0
+                        },
+                        "was_afk": false,
+                        "was_penalized": false,
+                        "stayed_in_spawn": false
+                    }
+                ]
+            },
+            {
+                "winning_team": "Blue",
+                "end_type": "Round timer expired",
+                "bomb_planted": false,
+                "bomb_defused": false,
+                "plant_events": {
+                    "plant_location": null,
+                    "planted_by": null,
+                    "plant_site": null,
+                    "plant_time_in_round": null,
+                    "player_locations_on_plant": null
+                },
+                "defuse_events": {
+                    "defuse_location": null,
+                    "defused_by": null,
+                    "defuse_time_in_round": null,
+                    "player_locations_on_defuse": null
+                },
+                "player_stats": [
+                    {
+                        "ability_casts": {
+                            "c_casts": null,
+                            "q_casts": null,
+                            "e_cast": null,
+                            "x_cast": null
+                        },
+                        "player_puuid": "7f313cb9-e0a8-57d0-a163-4d7155a64d7c",
+                        "player_display_name": "Feyvern#meow",
+                        "player_team": "Blue",
+                        "damage_events": [],
+                        "damage": 0,
+                        "bodyshots": 0,
+                        "headshots": 0,
+                        "legshots": 0,
+                        "kill_events": [],
+                        "kills": 0,
+                        "score": 0,
+                        "economy": {
+                            "loadout_value": 6100,
+                            "weapon": {
+                                "id": "A03B24D3-4319-996D-0F8C-94BBFBA1DFC7",
+                                "name": "Operator",
+                                "assets": {
+                                    "display_icon": "https://media.valorant-api.com/weapons/a03b24d3-4319-996d-0f8c-94bbfba1dfc7/displayicon.png",
+                                    "killfeed_icon": "https://media.valorant-api.com/weapons/a03b24d3-4319-996d-0f8c-94bbfba1dfc7/killstreamicon.png"
+                                }
+                            },
+                            "armor": {
+                                "id": "822BCAB2-40A2-324E-C137-E09195AD7692",
+                                "name": "Heavy Shields",
+                                "assets": {
+                                    "display_icon": "https://media.valorant-api.com/gear/822bcab2-40a2-324e-c137-e09195ad7692/displayicon.png"
+                                }
+                            },
+                            "remaining": 9000,
+                            "spent": 0
+                        },
+                        "was_afk": false,
+                        "was_penalized": false,
+                        "stayed_in_spawn": false
+                    },
+                    {
+                        "ability_casts": {
+                            "c_casts": null,
+                            "q_casts": null,
+                            "e_cast": null,
+                            "x_cast": null
+                        },
+                        "player_puuid": "dde7fbe5-1e4c-5110-87d4-ca0b5691e3f7",
+                        "player_display_name": "Velocity#300",
+                        "player_team": "Red",
+                        "damage_events": [],
+                        "damage": 0,
+                        "bodyshots": 0,
+                        "headshots": 0,
+                        "legshots": 0,
+                        "kill_events": [],
+                        "kills": 0,
+                        "score": 0,
+                        "economy": {
+                            "loadout_value": 0,
+                            "weapon": {
+                                "id": "29A0CFAB-485B-F5D5-779A-B59F85E204A8",
+                                "name": "Classic",
+                                "assets": {
+                                    "display_icon": "https://media.valorant-api.com/weapons/29a0cfab-485b-f5d5-779a-b59f85e204a8/displayicon.png",
+                                    "killfeed_icon": "https://media.valorant-api.com/weapons/29a0cfab-485b-f5d5-779a-b59f85e204a8/killstreamicon.png"
+                                }
+                            },
+                            "armor": {
+                                "id": null,
+                                "name": null,
+                                "assets": {
+                                    "display_icon": null
+                                }
+                            },
+                            "remaining": 9000,
+                            "spent": 0
+                        },
+                        "was_afk": false,
+                        "was_penalized": false,
+                        "stayed_in_spawn": false
+                    }
+                ]
+            },
+            {
+                "winning_team": "Blue",
+                "end_type": "Round timer expired",
+                "bomb_planted": false,
+                "bomb_defused": false,
+                "plant_events": {
+                    "plant_location": null,
+                    "planted_by": null,
+                    "plant_site": null,
+                    "plant_time_in_round": null,
+                    "player_locations_on_plant": null
+                },
+                "defuse_events": {
+                    "defuse_location": null,
+                    "defused_by": null,
+                    "defuse_time_in_round": null,
+                    "player_locations_on_defuse": null
+                },
+                "player_stats": [
+                    {
+                        "ability_casts": {
+                            "c_casts": null,
+                            "q_casts": null,
+                            "e_cast": null,
+                            "x_cast": null
+                        },
+                        "player_puuid": "7f313cb9-e0a8-57d0-a163-4d7155a64d7c",
+                        "player_display_name": "Feyvern#meow",
+                        "player_team": "Blue",
+                        "damage_events": [],
+                        "damage": 0,
+                        "bodyshots": 0,
+                        "headshots": 0,
+                        "legshots": 0,
+                        "kill_events": [],
+                        "kills": 0,
+                        "score": 0,
+                        "economy": {
+                            "loadout_value": 6100,
+                            "weapon": {
+                                "id": "A03B24D3-4319-996D-0F8C-94BBFBA1DFC7",
+                                "name": "Operator",
+                                "assets": {
+                                    "display_icon": "https://media.valorant-api.com/weapons/a03b24d3-4319-996d-0f8c-94bbfba1dfc7/displayicon.png",
+                                    "killfeed_icon": "https://media.valorant-api.com/weapons/a03b24d3-4319-996d-0f8c-94bbfba1dfc7/killstreamicon.png"
+                                }
+                            },
+                            "armor": {
+                                "id": "822BCAB2-40A2-324E-C137-E09195AD7692",
+                                "name": "Heavy Shields",
+                                "assets": {
+                                    "display_icon": "https://media.valorant-api.com/gear/822bcab2-40a2-324e-c137-e09195ad7692/displayicon.png"
+                                }
+                            },
+                            "remaining": 9000,
+                            "spent": 0
+                        },
+                        "was_afk": false,
+                        "was_penalized": false,
+                        "stayed_in_spawn": false
+                    },
+                    {
+                        "ability_casts": {
+                            "c_casts": null,
+                            "q_casts": null,
+                            "e_cast": null,
+                            "x_cast": null
+                        },
+                        "player_puuid": "dde7fbe5-1e4c-5110-87d4-ca0b5691e3f7",
+                        "player_display_name": "Velocity#300",
+                        "player_team": "Red",
+                        "damage_events": [],
+                        "damage": 0,
+                        "bodyshots": 0,
+                        "headshots": 0,
+                        "legshots": 0,
+                        "kill_events": [],
+                        "kills": 0,
+                        "score": 0,
+                        "economy": {
+                            "loadout_value": 0,
+                            "weapon": {
+                                "id": "29A0CFAB-485B-F5D5-779A-B59F85E204A8",
+                                "name": "Classic",
+                                "assets": {
+                                    "display_icon": "https://media.valorant-api.com/weapons/29a0cfab-485b-f5d5-779a-b59f85e204a8/displayicon.png",
+                                    "killfeed_icon": "https://media.valorant-api.com/weapons/29a0cfab-485b-f5d5-779a-b59f85e204a8/killstreamicon.png"
+                                }
+                            },
+                            "armor": {
+                                "id": null,
+                                "name": null,
+                                "assets": {
+                                    "display_icon": null
+                                }
+                            },
+                            "remaining": 9000,
+                            "spent": 0
+                        },
+                        "was_afk": false,
+                        "was_penalized": false,
+                        "stayed_in_spawn": false
+                    }
+                ]
+            },
+            {
+                "winning_team": "Blue",
+                "end_type": "Round timer expired",
+                "bomb_planted": false,
+                "bomb_defused": false,
+                "plant_events": {
+                    "plant_location": null,
+                    "planted_by": null,
+                    "plant_site": null,
+                    "plant_time_in_round": null,
+                    "player_locations_on_plant": null
+                },
+                "defuse_events": {
+                    "defuse_location": null,
+                    "defused_by": null,
+                    "defuse_time_in_round": null,
+                    "player_locations_on_defuse": null
+                },
+                "player_stats": [
+                    {
+                        "ability_casts": {
+                            "c_casts": null,
+                            "q_casts": null,
+                            "e_cast": null,
+                            "x_cast": null
+                        },
+                        "player_puuid": "7f313cb9-e0a8-57d0-a163-4d7155a64d7c",
+                        "player_display_name": "Feyvern#meow",
+                        "player_team": "Blue",
+                        "damage_events": [],
+                        "damage": 0,
+                        "bodyshots": 0,
+                        "headshots": 0,
+                        "legshots": 0,
+                        "kill_events": [],
+                        "kills": 0,
+                        "score": 0,
+                        "economy": {
+                            "loadout_value": 6100,
+                            "weapon": {
+                                "id": "A03B24D3-4319-996D-0F8C-94BBFBA1DFC7",
+                                "name": "Operator",
+                                "assets": {
+                                    "display_icon": "https://media.valorant-api.com/weapons/a03b24d3-4319-996d-0f8c-94bbfba1dfc7/displayicon.png",
+                                    "killfeed_icon": "https://media.valorant-api.com/weapons/a03b24d3-4319-996d-0f8c-94bbfba1dfc7/killstreamicon.png"
+                                }
+                            },
+                            "armor": {
+                                "id": "822BCAB2-40A2-324E-C137-E09195AD7692",
+                                "name": "Heavy Shields",
+                                "assets": {
+                                    "display_icon": "https://media.valorant-api.com/gear/822bcab2-40a2-324e-c137-e09195ad7692/displayicon.png"
+                                }
+                            },
+                            "remaining": 9000,
+                            "spent": 0
+                        },
+                        "was_afk": false,
+                        "was_penalized": false,
+                        "stayed_in_spawn": false
+                    },
+                    {
+                        "ability_casts": {
+                            "c_casts": null,
+                            "q_casts": null,
+                            "e_cast": null,
+                            "x_cast": null
+                        },
+                        "player_puuid": "dde7fbe5-1e4c-5110-87d4-ca0b5691e3f7",
+                        "player_display_name": "Velocity#300",
+                        "player_team": "Red",
+                        "damage_events": [],
+                        "damage": 0,
+                        "bodyshots": 0,
+                        "headshots": 0,
+                        "legshots": 0,
+                        "kill_events": [],
+                        "kills": 0,
+                        "score": 0,
+                        "economy": {
+                            "loadout_value": 0,
+                            "weapon": {
+                                "id": "29A0CFAB-485B-F5D5-779A-B59F85E204A8",
+                                "name": "Classic",
+                                "assets": {
+                                    "display_icon": "https://media.valorant-api.com/weapons/29a0cfab-485b-f5d5-779a-b59f85e204a8/displayicon.png",
+                                    "killfeed_icon": "https://media.valorant-api.com/weapons/29a0cfab-485b-f5d5-779a-b59f85e204a8/killstreamicon.png"
+                                }
+                            },
+                            "armor": {
+                                "id": null,
+                                "name": null,
+                                "assets": {
+                                    "display_icon": null
+                                }
+                            },
+                            "remaining": 9000,
+                            "spent": 0
+                        },
+                        "was_afk": false,
+                        "was_penalized": false,
+                        "stayed_in_spawn": false
+                    }
+                ]
+            },
+            {
+                "winning_team": "Red",
+                "end_type": "Round timer expired",
+                "bomb_planted": false,
+                "bomb_defused": false,
+                "plant_events": {
+                    "plant_location": null,
+                    "planted_by": null,
+                    "plant_site": null,
+                    "plant_time_in_round": null,
+                    "player_locations_on_plant": null
+                },
+                "defuse_events": {
+                    "defuse_location": null,
+                    "defused_by": null,
+                    "defuse_time_in_round": null,
+                    "player_locations_on_defuse": null
+                },
+                "player_stats": [
+                    {
+                        "ability_casts": {
+                            "c_casts": null,
+                            "q_casts": null,
+                            "e_cast": null,
+                            "x_cast": null
+                        },
+                        "player_puuid": "7f313cb9-e0a8-57d0-a163-4d7155a64d7c",
+                        "player_display_name": "Feyvern#meow",
+                        "player_team": "Blue",
+                        "damage_events": [],
+                        "damage": 0,
+                        "bodyshots": 0,
+                        "headshots": 0,
+                        "legshots": 0,
+                        "kill_events": [],
+                        "kills": 0,
+                        "score": 0,
+                        "economy": {
+                            "loadout_value": 0,
+                            "weapon": {
+                                "id": "29A0CFAB-485B-F5D5-779A-B59F85E204A8",
+                                "name": "Classic",
+                                "assets": {
+                                    "display_icon": "https://media.valorant-api.com/weapons/29a0cfab-485b-f5d5-779a-b59f85e204a8/displayicon.png",
+                                    "killfeed_icon": "https://media.valorant-api.com/weapons/29a0cfab-485b-f5d5-779a-b59f85e204a8/killstreamicon.png"
+                                }
+                            },
+                            "armor": {
+                                "id": null,
+                                "name": null,
+                                "assets": {
+                                    "display_icon": null
+                                }
+                            },
+                            "remaining": 800,
+                            "spent": 0
+                        },
+                        "was_afk": false,
+                        "was_penalized": false,
+                        "stayed_in_spawn": false
+                    },
+                    {
+                        "ability_casts": {
+                            "c_casts": null,
+                            "q_casts": null,
+                            "e_cast": null,
+                            "x_cast": null
+                        },
+                        "player_puuid": "dde7fbe5-1e4c-5110-87d4-ca0b5691e3f7",
+                        "player_display_name": "Velocity#300",
+                        "player_team": "Red",
+                        "damage_events": [],
+                        "damage": 0,
+                        "bodyshots": 0,
+                        "headshots": 0,
+                        "legshots": 0,
+                        "kill_events": [],
+                        "kills": 0,
+                        "score": 0,
+                        "economy": {
+                            "loadout_value": 0,
+                            "weapon": {
+                                "id": "29A0CFAB-485B-F5D5-779A-B59F85E204A8",
+                                "name": "Classic",
+                                "assets": {
+                                    "display_icon": "https://media.valorant-api.com/weapons/29a0cfab-485b-f5d5-779a-b59f85e204a8/displayicon.png",
+                                    "killfeed_icon": "https://media.valorant-api.com/weapons/29a0cfab-485b-f5d5-779a-b59f85e204a8/killstreamicon.png"
+                                }
+                            },
+                            "armor": {
+                                "id": null,
+                                "name": null,
+                                "assets": {
+                                    "display_icon": null
+                                }
+                            },
+                            "remaining": 800,
+                            "spent": 0
+                        },
+                        "was_afk": false,
+                        "was_penalized": false,
+                        "stayed_in_spawn": false
+                    }
+                ]
+            },
+            {
+                "winning_team": "Red",
+                "end_type": "Round timer expired",
+                "bomb_planted": false,
+                "bomb_defused": false,
+                "plant_events": {
+                    "plant_location": null,
+                    "planted_by": null,
+                    "plant_site": null,
+                    "plant_time_in_round": null,
+                    "player_locations_on_plant": null
+                },
+                "defuse_events": {
+                    "defuse_location": null,
+                    "defused_by": null,
+                    "defuse_time_in_round": null,
+                    "player_locations_on_defuse": null
+                },
+                "player_stats": [
+                    {
+                        "ability_casts": {
+                            "c_casts": null,
+                            "q_casts": null,
+                            "e_cast": null,
+                            "x_cast": null
+                        },
+                        "player_puuid": "7f313cb9-e0a8-57d0-a163-4d7155a64d7c",
+                        "player_display_name": "Feyvern#meow",
+                        "player_team": "Blue",
+                        "damage_events": [],
+                        "damage": 0,
+                        "bodyshots": 0,
+                        "headshots": 0,
+                        "legshots": 0,
+                        "kill_events": [],
+                        "kills": 0,
+                        "score": 0,
+                        "economy": {
+                            "loadout_value": 0,
+                            "weapon": {
+                                "id": "29A0CFAB-485B-F5D5-779A-B59F85E204A8",
+                                "name": "Classic",
+                                "assets": {
+                                    "display_icon": "https://media.valorant-api.com/weapons/29a0cfab-485b-f5d5-779a-b59f85e204a8/displayicon.png",
+                                    "killfeed_icon": "https://media.valorant-api.com/weapons/29a0cfab-485b-f5d5-779a-b59f85e204a8/killstreamicon.png"
+                                }
+                            },
+                            "armor": {
+                                "id": null,
+                                "name": null,
+                                "assets": {
+                                    "display_icon": null
+                                }
+                            },
+                            "remaining": 1800,
+                            "spent": 0
+                        },
+                        "was_afk": false,
+                        "was_penalized": false,
+                        "stayed_in_spawn": false
+                    },
+                    {
+                        "ability_casts": {
+                            "c_casts": null,
+                            "q_casts": null,
+                            "e_cast": null,
+                            "x_cast": null
+                        },
+                        "player_puuid": "dde7fbe5-1e4c-5110-87d4-ca0b5691e3f7",
+                        "player_display_name": "Velocity#300",
+                        "player_team": "Red",
+                        "damage_events": [],
+                        "damage": 0,
+                        "bodyshots": 0,
+                        "headshots": 0,
+                        "legshots": 0,
+                        "kill_events": [],
+                        "kills": 0,
+                        "score": 0,
+                        "economy": {
+                            "loadout_value": 0,
+                            "weapon": {
+                                "id": "29A0CFAB-485B-F5D5-779A-B59F85E204A8",
+                                "name": "Classic",
+                                "assets": {
+                                    "display_icon": "https://media.valorant-api.com/weapons/29a0cfab-485b-f5d5-779a-b59f85e204a8/displayicon.png",
+                                    "killfeed_icon": "https://media.valorant-api.com/weapons/29a0cfab-485b-f5d5-779a-b59f85e204a8/killstreamicon.png"
+                                }
+                            },
+                            "armor": {
+                                "id": null,
+                                "name": null,
+                                "assets": {
+                                    "display_icon": null
+                                }
+                            },
+                            "remaining": 3800,
+                            "spent": 0
+                        },
+                        "was_afk": false,
+                        "was_penalized": false,
+                        "stayed_in_spawn": false
+                    }
+                ]
+            },
+            {
+                "winning_team": "Red",
+                "end_type": "Round timer expired",
+                "bomb_planted": false,
+                "bomb_defused": false,
+                "plant_events": {
+                    "plant_location": null,
+                    "planted_by": null,
+                    "plant_site": null,
+                    "plant_time_in_round": null,
+                    "player_locations_on_plant": null
+                },
+                "defuse_events": {
+                    "defuse_location": null,
+                    "defused_by": null,
+                    "defuse_time_in_round": null,
+                    "player_locations_on_defuse": null
+                },
+                "player_stats": [
+                    {
+                        "ability_casts": {
+                            "c_casts": null,
+                            "q_casts": null,
+                            "e_cast": null,
+                            "x_cast": null
+                        },
+                        "player_puuid": "7f313cb9-e0a8-57d0-a163-4d7155a64d7c",
+                        "player_display_name": "Feyvern#meow",
+                        "player_team": "Blue",
+                        "damage_events": [],
+                        "damage": 0,
+                        "bodyshots": 0,
+                        "headshots": 0,
+                        "legshots": 0,
+                        "kill_events": [],
+                        "kills": 0,
+                        "score": 0,
+                        "economy": {
+                            "loadout_value": 0,
+                            "weapon": {
+                                "id": "29A0CFAB-485B-F5D5-779A-B59F85E204A8",
+                                "name": "Classic",
+                                "assets": {
+                                    "display_icon": "https://media.valorant-api.com/weapons/29a0cfab-485b-f5d5-779a-b59f85e204a8/displayicon.png",
+                                    "killfeed_icon": "https://media.valorant-api.com/weapons/29a0cfab-485b-f5d5-779a-b59f85e204a8/killstreamicon.png"
+                                }
+                            },
+                            "armor": {
+                                "id": null,
+                                "name": null,
+                                "assets": {
+                                    "display_icon": null
+                                }
+                            },
+                            "remaining": 2800,
+                            "spent": 0
+                        },
+                        "was_afk": false,
+                        "was_penalized": false,
+                        "stayed_in_spawn": false
+                    },
+                    {
+                        "ability_casts": {
+                            "c_casts": null,
+                            "q_casts": null,
+                            "e_cast": null,
+                            "x_cast": null
+                        },
+                        "player_puuid": "dde7fbe5-1e4c-5110-87d4-ca0b5691e3f7",
+                        "player_display_name": "Velocity#300",
+                        "player_team": "Red",
+                        "damage_events": [],
+                        "damage": 0,
+                        "bodyshots": 0,
+                        "headshots": 0,
+                        "legshots": 0,
+                        "kill_events": [],
+                        "kills": 0,
+                        "score": 0,
+                        "economy": {
+                            "loadout_value": 0,
+                            "weapon": {
+                                "id": "29A0CFAB-485B-F5D5-779A-B59F85E204A8",
+                                "name": "Classic",
+                                "assets": {
+                                    "display_icon": "https://media.valorant-api.com/weapons/29a0cfab-485b-f5d5-779a-b59f85e204a8/displayicon.png",
+                                    "killfeed_icon": "https://media.valorant-api.com/weapons/29a0cfab-485b-f5d5-779a-b59f85e204a8/killstreamicon.png"
+                                }
+                            },
+                            "armor": {
+                                "id": null,
+                                "name": null,
+                                "assets": {
+                                    "display_icon": null
+                                }
+                            },
+                            "remaining": 6800,
+                            "spent": 0
+                        },
+                        "was_afk": false,
+                        "was_penalized": false,
+                        "stayed_in_spawn": false
+                    }
+                ]
+            },
+            {
+                "winning_team": "Red",
+                "end_type": "Round timer expired",
+                "bomb_planted": false,
+                "bomb_defused": false,
+                "plant_events": {
+                    "plant_location": null,
+                    "planted_by": null,
+                    "plant_site": null,
+                    "plant_time_in_round": null,
+                    "player_locations_on_plant": null
+                },
+                "defuse_events": {
+                    "defuse_location": null,
+                    "defused_by": null,
+                    "defuse_time_in_round": null,
+                    "player_locations_on_defuse": null
+                },
+                "player_stats": [
+                    {
+                        "ability_casts": {
+                            "c_casts": null,
+                            "q_casts": null,
+                            "e_cast": null,
+                            "x_cast": null
+                        },
+                        "player_puuid": "7f313cb9-e0a8-57d0-a163-4d7155a64d7c",
+                        "player_display_name": "Feyvern#meow",
+                        "player_team": "Blue",
+                        "damage_events": [],
+                        "damage": 0,
+                        "bodyshots": 0,
+                        "headshots": 0,
+                        "legshots": 0,
+                        "kill_events": [],
+                        "kills": 0,
+                        "score": 0,
+                        "economy": {
+                            "loadout_value": 0,
+                            "weapon": {
+                                "id": "29A0CFAB-485B-F5D5-779A-B59F85E204A8",
+                                "name": "Classic",
+                                "assets": {
+                                    "display_icon": "https://media.valorant-api.com/weapons/29a0cfab-485b-f5d5-779a-b59f85e204a8/displayicon.png",
+                                    "killfeed_icon": "https://media.valorant-api.com/weapons/29a0cfab-485b-f5d5-779a-b59f85e204a8/killstreamicon.png"
+                                }
+                            },
+                            "armor": {
+                                "id": null,
+                                "name": null,
+                                "assets": {
+                                    "display_icon": null
+                                }
+                            },
+                            "remaining": 3800,
+                            "spent": 0
+                        },
+                        "was_afk": false,
+                        "was_penalized": false,
+                        "stayed_in_spawn": false
+                    },
+                    {
+                        "ability_casts": {
+                            "c_casts": null,
+                            "q_casts": null,
+                            "e_cast": null,
+                            "x_cast": null
+                        },
+                        "player_puuid": "dde7fbe5-1e4c-5110-87d4-ca0b5691e3f7",
+                        "player_display_name": "Velocity#300",
+                        "player_team": "Red",
+                        "damage_events": [],
+                        "damage": 0,
+                        "bodyshots": 0,
+                        "headshots": 0,
+                        "legshots": 0,
+                        "kill_events": [],
+                        "kills": 0,
+                        "score": 0,
+                        "economy": {
+                            "loadout_value": 0,
+                            "weapon": {
+                                "id": "29A0CFAB-485B-F5D5-779A-B59F85E204A8",
+                                "name": "Classic",
+                                "assets": {
+                                    "display_icon": "https://media.valorant-api.com/weapons/29a0cfab-485b-f5d5-779a-b59f85e204a8/displayicon.png",
+                                    "killfeed_icon": "https://media.valorant-api.com/weapons/29a0cfab-485b-f5d5-779a-b59f85e204a8/killstreamicon.png"
+                                }
+                            },
+                            "armor": {
+                                "id": null,
+                                "name": null,
+                                "assets": {
+                                    "display_icon": null
+                                }
+                            },
+                            "remaining": 9000,
+                            "spent": 0
+                        },
+                        "was_afk": false,
+                        "was_penalized": false,
+                        "stayed_in_spawn": false
+                    }
+                ]
+            },
+            {
+                "winning_team": "Blue",
+                "end_type": "Eliminated",
+                "bomb_planted": false,
+                "bomb_defused": false,
+                "plant_events": {
+                    "plant_location": null,
+                    "planted_by": null,
+                    "plant_site": null,
+                    "plant_time_in_round": null,
+                    "player_locations_on_plant": null
+                },
+                "defuse_events": {
+                    "defuse_location": null,
+                    "defused_by": null,
+                    "defuse_time_in_round": null,
+                    "player_locations_on_defuse": null
+                },
+                "player_stats": [
+                    {
+                        "ability_casts": {
+                            "c_casts": null,
+                            "q_casts": null,
+                            "e_cast": null,
+                            "x_cast": null
+                        },
+                        "player_puuid": "7f313cb9-e0a8-57d0-a163-4d7155a64d7c",
+                        "player_display_name": "Feyvern#meow",
+                        "player_team": "Blue",
+                        "damage_events": [
+                            {
+                                "receiver_puuid": "dde7fbe5-1e4c-5110-87d4-ca0b5691e3f7",
+                                "receiver_display_name": "Velocity#300",
+                                "receiver_team": "Red",
+                                "bodyshots": 0,
+                                "damage": 100,
+                                "headshots": 0,
+                                "legshots": 0
+                            }
+                        ],
+                        "damage": 100,
+                        "bodyshots": 0,
+                        "headshots": 0,
+                        "legshots": 0,
+                        "kill_events": [
+                            {
+                                "kill_time_in_round": 25899,
+                                "kill_time_in_match": 2055457,
+                                "killer_puuid": "7f313cb9-e0a8-57d0-a163-4d7155a64d7c",
+                                "killer_display_name": "Feyvern#meow",
+                                "killer_team": "Blue",
+                                "victim_puuid": "dde7fbe5-1e4c-5110-87d4-ca0b5691e3f7",
+                                "victim_display_name": "Velocity#300",
+                                "victim_team": "Red",
+                                "victim_death_location": {
+                                    "x": 1582,
+                                    "y": -10517
+                                },
+                                "damage_weapon_id": "GrenadeAbility",
+                                "damage_weapon_name": null,
+                                "damage_weapon_assets": {
+                                    "display_icon": null,
+                                    "killfeed_icon": null
+                                },
+                                "secondary_fire_mode": false,
+                                "player_locations_on_kill": [
+                                    {
+                                        "player_puuid": "7f313cb9-e0a8-57d0-a163-4d7155a64d7c",
+                                        "player_display_name": "Feyvern#meow",
+                                        "player_team": "Blue",
+                                        "location": {
+                                            "x": -1202,
+                                            "y": -8707
+                                        },
+                                        "view_radians": 1.8819067
+                                    }
+                                ],
+                                "assistants": []
+                            }
+                        ],
+                        "kills": 1,
+                        "score": 170,
+                        "economy": {
+                            "loadout_value": 4500,
+                            "weapon": {
+                                "id": "EE8E8D15-496B-07AC-E5F6-8FAE5D4C7B1A",
+                                "name": "Phantom",
+                                "assets": {
+                                    "display_icon": "https://media.valorant-api.com/weapons/ee8e8d15-496b-07ac-e5f6-8fae5d4c7b1a/displayicon.png",
+                                    "killfeed_icon": "https://media.valorant-api.com/weapons/ee8e8d15-496b-07ac-e5f6-8fae5d4c7b1a/killstreamicon.png"
+                                }
+                            },
+                            "armor": {
+                                "id": "822BCAB2-40A2-324E-C137-E09195AD7692",
+                                "name": "Heavy Shields",
+                                "assets": {
+                                    "display_icon": "https://media.valorant-api.com/gear/822bcab2-40a2-324e-c137-e09195ad7692/displayicon.png"
+                                }
+                            },
+                            "remaining": 300,
+                            "spent": 4500
+                        },
+                        "was_afk": false,
+                        "was_penalized": false,
+                        "stayed_in_spawn": false
+                    },
+                    {
+                        "ability_casts": {
+                            "c_casts": null,
+                            "q_casts": null,
+                            "e_cast": null,
+                            "x_cast": null
+                        },
+                        "player_puuid": "dde7fbe5-1e4c-5110-87d4-ca0b5691e3f7",
+                        "player_display_name": "Velocity#300",
+                        "player_team": "Red",
+                        "damage_events": [],
+                        "damage": 0,
+                        "bodyshots": 0,
+                        "headshots": 0,
+                        "legshots": 0,
+                        "kill_events": [],
+                        "kills": 0,
+                        "score": 0,
+                        "economy": {
+                            "loadout_value": 0,
+                            "weapon": {
+                                "id": "29A0CFAB-485B-F5D5-779A-B59F85E204A8",
+                                "name": "Classic",
+                                "assets": {
+                                    "display_icon": "https://media.valorant-api.com/weapons/29a0cfab-485b-f5d5-779a-b59f85e204a8/displayicon.png",
+                                    "killfeed_icon": "https://media.valorant-api.com/weapons/29a0cfab-485b-f5d5-779a-b59f85e204a8/killstreamicon.png"
+                                }
+                            },
+                            "armor": {
+                                "id": null,
+                                "name": null,
+                                "assets": {
+                                    "display_icon": null
+                                }
+                            },
+                            "remaining": 9000,
+                            "spent": 0
+                        },
+                        "was_afk": false,
+                        "was_penalized": false,
+                        "stayed_in_spawn": false
+                    }
+                ]
+            },
+            {
+                "winning_team": "Blue",
+                "end_type": "Eliminated",
+                "bomb_planted": false,
+                "bomb_defused": false,
+                "plant_events": {
+                    "plant_location": null,
+                    "planted_by": null,
+                    "plant_site": null,
+                    "plant_time_in_round": null,
+                    "player_locations_on_plant": null
+                },
+                "defuse_events": {
+                    "defuse_location": null,
+                    "defused_by": null,
+                    "defuse_time_in_round": null,
+                    "player_locations_on_defuse": null
+                },
+                "player_stats": [
+                    {
+                        "ability_casts": {
+                            "c_casts": null,
+                            "q_casts": null,
+                            "e_cast": null,
+                            "x_cast": null
+                        },
+                        "player_puuid": "7f313cb9-e0a8-57d0-a163-4d7155a64d7c",
+                        "player_display_name": "Feyvern#meow",
+                        "player_team": "Blue",
+                        "damage_events": [
+                            {
+                                "receiver_puuid": "dde7fbe5-1e4c-5110-87d4-ca0b5691e3f7",
+                                "receiver_display_name": "Velocity#300",
+                                "receiver_team": "Red",
+                                "bodyshots": 1,
+                                "damage": 150,
+                                "headshots": 0,
+                                "legshots": 0
+                            }
+                        ],
+                        "damage": 150,
+                        "bodyshots": 1,
+                        "headshots": 0,
+                        "legshots": 0,
+                        "kill_events": [
+                            {
+                                "kill_time_in_round": 24218,
+                                "kill_time_in_match": 2116709,
+                                "killer_puuid": "7f313cb9-e0a8-57d0-a163-4d7155a64d7c",
+                                "killer_display_name": "Feyvern#meow",
+                                "killer_team": "Blue",
+                                "victim_puuid": "dde7fbe5-1e4c-5110-87d4-ca0b5691e3f7",
+                                "victim_display_name": "Velocity#300",
+                                "victim_team": "Red",
+                                "victim_death_location": {
+                                    "x": 2382,
+                                    "y": -10417
+                                },
+                                "damage_weapon_id": "",
+                                "damage_weapon_name": null,
+                                "damage_weapon_assets": {
+                                    "display_icon": null,
+                                    "killfeed_icon": null
+                                },
+                                "secondary_fire_mode": false,
+                                "player_locations_on_kill": [
+                                    {
+                                        "player_puuid": "7f313cb9-e0a8-57d0-a163-4d7155a64d7c",
+                                        "player_display_name": "Feyvern#meow",
+                                        "player_team": "Blue",
+                                        "location": {
+                                            "x": 2496,
+                                            "y": -10467
+                                        },
+                                        "view_radians": 2.7655756
+                                    }
+                                ],
+                                "assistants": []
+                            }
+                        ],
+                        "kills": 1,
+                        "score": 170,
+                        "economy": {
+                            "loadout_value": 4300,
+                            "weapon": {
+                                "id": "EE8E8D15-496B-07AC-E5F6-8FAE5D4C7B1A",
+                                "name": "Phantom",
+                                "assets": {
+                                    "display_icon": "https://media.valorant-api.com/weapons/ee8e8d15-496b-07ac-e5f6-8fae5d4c7b1a/displayicon.png",
+                                    "killfeed_icon": "https://media.valorant-api.com/weapons/ee8e8d15-496b-07ac-e5f6-8fae5d4c7b1a/killstreamicon.png"
+                                }
+                            },
+                            "armor": {
+                                "id": "822BCAB2-40A2-324E-C137-E09195AD7692",
+                                "name": "Heavy Shields",
+                                "assets": {
+                                    "display_icon": "https://media.valorant-api.com/gear/822bcab2-40a2-324e-c137-e09195ad7692/displayicon.png"
+                                }
+                            },
+                            "remaining": 3500,
+                            "spent": 0
+                        },
+                        "was_afk": false,
+                        "was_penalized": false,
+                        "stayed_in_spawn": false
+                    },
+                    {
+                        "ability_casts": {
+                            "c_casts": null,
+                            "q_casts": null,
+                            "e_cast": null,
+                            "x_cast": null
+                        },
+                        "player_puuid": "dde7fbe5-1e4c-5110-87d4-ca0b5691e3f7",
+                        "player_display_name": "Velocity#300",
+                        "player_team": "Red",
+                        "damage_events": [],
+                        "damage": 0,
+                        "bodyshots": 0,
+                        "headshots": 0,
+                        "legshots": 0,
+                        "kill_events": [],
+                        "kills": 0,
+                        "score": 0,
+                        "economy": {
+                            "loadout_value": 0,
+                            "weapon": {
+                                "id": "29A0CFAB-485B-F5D5-779A-B59F85E204A8",
+                                "name": "Classic",
+                                "assets": {
+                                    "display_icon": "https://media.valorant-api.com/weapons/29a0cfab-485b-f5d5-779a-b59f85e204a8/displayicon.png",
+                                    "killfeed_icon": "https://media.valorant-api.com/weapons/29a0cfab-485b-f5d5-779a-b59f85e204a8/killstreamicon.png"
+                                }
+                            },
+                            "armor": {
+                                "id": null,
+                                "name": null,
+                                "assets": {
+                                    "display_icon": null
+                                }
+                            },
+                            "remaining": 9000,
+                            "spent": 0
+                        },
+                        "was_afk": false,
+                        "was_penalized": false,
+                        "stayed_in_spawn": false
+                    }
+                ]
+            }
+        ],
+        "kills": [
+            {
+                "kill_time_in_round": 31493,
+                "kill_time_in_match": 771655,
+                "round": 5,
+                "killer_puuid": "dde7fbe5-1e4c-5110-87d4-ca0b5691e3f7",
+                "killer_display_name": "Velocity#300",
+                "killer_team": "Red",
+                "victim_puuid": "7f313cb9-e0a8-57d0-a163-4d7155a64d7c",
+                "victim_display_name": "Feyvern#meow",
+                "victim_team": "Blue",
+                "victim_death_location": {
+                    "x": 1157,
+                    "y": -750
+                },
+                "damage_weapon_id": "29A0CFAB-485B-F5D5-779A-B59F85E204A8",
+                "damage_weapon_name": "Classic",
+                "damage_weapon_assets": {
+                    "display_icon": "https://media.valorant-api.com/weapons/29a0cfab-485b-f5d5-779a-b59f85e204a8/displayicon.png",
+                    "killfeed_icon": "https://media.valorant-api.com/weapons/29a0cfab-485b-f5d5-779a-b59f85e204a8/killstreamicon.png"
+                },
+                "secondary_fire_mode": false,
+                "player_locations_on_kill": [
+                    {
+                        "player_puuid": "dde7fbe5-1e4c-5110-87d4-ca0b5691e3f7",
+                        "player_display_name": "Velocity#300",
+                        "player_team": "Red",
+                        "location": {
+                            "x": -360,
+                            "y": 978
+                        },
+                        "view_radians": 5.428854
+                    }
+                ],
+                "assistants": []
+            },
+            {
+                "kill_time_in_round": 18820,
+                "kill_time_in_match": 827500,
+                "round": 6,
+                "killer_puuid": "7f313cb9-e0a8-57d0-a163-4d7155a64d7c",
+                "killer_display_name": "Feyvern#meow",
+                "killer_team": "Blue",
+                "victim_puuid": "dde7fbe5-1e4c-5110-87d4-ca0b5691e3f7",
+                "victim_display_name": "Velocity#300",
+                "victim_team": "Red",
+                "victim_death_location": {
+                    "x": 349,
+                    "y": 1167
+                },
+                "damage_weapon_id": "GrenadeAbility",
+                "damage_weapon_name": null,
+                "damage_weapon_assets": {
+                    "display_icon": null,
+                    "killfeed_icon": null
+                },
+                "secondary_fire_mode": false,
+                "player_locations_on_kill": [
+                    {
+                        "player_puuid": "7f313cb9-e0a8-57d0-a163-4d7155a64d7c",
+                        "player_display_name": "Feyvern#meow",
+                        "player_team": "Blue",
+                        "location": {
+                            "x": 3581,
+                            "y": -1140
+                        },
+                        "view_radians": 2.643624
+                    }
+                ],
+                "assistants": []
+            },
+            {
+                "kill_time_in_round": 16781,
+                "kill_time_in_match": 881315,
+                "round": 7,
+                "killer_puuid": "7f313cb9-e0a8-57d0-a163-4d7155a64d7c",
+                "killer_display_name": "Feyvern#meow",
+                "killer_team": "Blue",
+                "victim_puuid": "dde7fbe5-1e4c-5110-87d4-ca0b5691e3f7",
+                "victim_display_name": "Velocity#300",
+                "victim_team": "Red",
+                "victim_death_location": {
+                    "x": -360,
+                    "y": 978
+                },
+                "damage_weapon_id": "A03B24D3-4319-996D-0F8C-94BBFBA1DFC7",
+                "damage_weapon_name": "Operator",
+                "damage_weapon_assets": {
+                    "display_icon": "https://media.valorant-api.com/weapons/a03b24d3-4319-996d-0f8c-94bbfba1dfc7/displayicon.png",
+                    "killfeed_icon": "https://media.valorant-api.com/weapons/a03b24d3-4319-996d-0f8c-94bbfba1dfc7/killstreamicon.png"
+                },
+                "secondary_fire_mode": true,
+                "player_locations_on_kill": [
+                    {
+                        "player_puuid": "7f313cb9-e0a8-57d0-a163-4d7155a64d7c",
+                        "player_display_name": "Feyvern#meow",
+                        "player_team": "Blue",
+                        "location": {
+                            "x": 3562,
+                            "y": -1192
+                        },
+                        "view_radians": 2.6378717
+                    }
+                ],
+                "assistants": []
+            },
+            {
+                "kill_time_in_round": 25899,
+                "kill_time_in_match": 2055457,
+                "round": 16,
+                "killer_puuid": "7f313cb9-e0a8-57d0-a163-4d7155a64d7c",
+                "killer_display_name": "Feyvern#meow",
+                "killer_team": "Blue",
+                "victim_puuid": "dde7fbe5-1e4c-5110-87d4-ca0b5691e3f7",
+                "victim_display_name": "Velocity#300",
+                "victim_team": "Red",
+                "victim_death_location": {
+                    "x": 1582,
+                    "y": -10517
+                },
+                "damage_weapon_id": "GrenadeAbility",
+                "damage_weapon_name": null,
+                "damage_weapon_assets": {
+                    "display_icon": null,
+                    "killfeed_icon": null
+                },
+                "secondary_fire_mode": false,
+                "player_locations_on_kill": [
+                    {
+                        "player_puuid": "7f313cb9-e0a8-57d0-a163-4d7155a64d7c",
+                        "player_display_name": "Feyvern#meow",
+                        "player_team": "Blue",
+                        "location": {
+                            "x": -1202,
+                            "y": -8707
+                        },
+                        "view_radians": 1.8819067
+                    }
+                ],
+                "assistants": []
+            },
+            {
+                "kill_time_in_round": 24218,
+                "kill_time_in_match": 2116709,
+                "round": 17,
+                "killer_puuid": "7f313cb9-e0a8-57d0-a163-4d7155a64d7c",
+                "killer_display_name": "Feyvern#meow",
+                "killer_team": "Blue",
+                "victim_puuid": "dde7fbe5-1e4c-5110-87d4-ca0b5691e3f7",
+                "victim_display_name": "Velocity#300",
+                "victim_team": "Red",
+                "victim_death_location": {
+                    "x": 2382,
+                    "y": -10417
+                },
+                "damage_weapon_id": "",
+                "damage_weapon_name": null,
+                "damage_weapon_assets": {
+                    "display_icon": null,
+                    "killfeed_icon": null
+                },
+                "secondary_fire_mode": false,
+                "player_locations_on_kill": [
+                    {
+                        "player_puuid": "7f313cb9-e0a8-57d0-a163-4d7155a64d7c",
+                        "player_display_name": "Feyvern#meow",
+                        "player_team": "Blue",
+                        "location": {
+                            "x": 2496,
+                            "y": -10467
+                        },
+                        "view_radians": 2.7655756
+                    }
+                ],
+                "assistants": []
+            }
+        ]
+    }
+]

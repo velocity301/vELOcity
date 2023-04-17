@@ -21,8 +21,8 @@ def drawTextElement(baseImage, overlayText, maxWidth, maxHeight, textPositionX, 
         font = ImageFont.truetype("PlayerCards/VALORANT.ttf", fontSize)
         textWidth, textHeight = draw.textsize(text, font=font)
     textPosition = (textPositionX, textPositionY) #(580, 150)
-    print(overlayText)
-    print(fontSize)
+    # print(overlayText)
+    # print(fontSize)
     draw.text((textPositionX-textWidth/2, textPositionY-textHeight/2), text, font=font, fill=(0, 0, 0))
     img.save(f"PlayerCards/{outputFile}") 
 
@@ -75,4 +75,4 @@ headShotPercentage, averageDamagePerRound, firstBloodPercentage, clutchPercentag
     # place overall score
     drawTextElement("working.png", str(99), 300, 300, 860, 1530, "working.png")
 
-generateCard("Velocity#9534", "Velocity#300", "Platinum", 1200, 55.3, 22.2, 132.2, 8.1, 22.1, 1.4)
+# generateCard("Velocity#9534", "Velocity#300", "Platinum", 1200, 55.3, 22.2, 132.2, 8.1, 22.1, 1.4)

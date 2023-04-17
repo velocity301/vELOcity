@@ -70,6 +70,22 @@ def removeDocument(key, value, collectionName):
     query = {key:value}
     result = target.delete_one(query)
 
+#returns valorantName when given the discordName
+def getValorantName(discordName):
+    target = db["players"]
+    query = {"discordName": discordName}
+    result = target.find_one(query, {"valorantName": 1, "_id": 0})
+    return result["valorantName"]
+
+#returns ELO when given the discordName
+def returnELO(discordName, guildID):
+    target = db["players"]
+    query = {"discordName": discordName}
+    result = target.find_one(query)["guildInfo"]
+    for elem in result:
+        if elem["guildID"] == str(guildID):
+            return elem["ELO"]
+
 # counts how many documents in a collection (collectionName) there are 
 # with a field (key) and value (value)
 def countInstances(key, value, collectionName):
@@ -93,6 +109,14 @@ def getCurrentGameID(guildID):
     query = {"guildID": guildID}
     return target.find_one(query, {"gameID": 1, "_id": 0})["gameID"]
 
+def getCurrentGamePlayer1(guildID, gameID):
+    target = db["games"]
+    query = {"guildID": guildID, "gameID": gameID}
+    result = target.find_one(query, {"players": 1, "_id": 0})
+    for elem in result["players"]:
+        return elem
+
+
 def incrementGameID(guildID):
     target = db["config"]
     query = {"guildID": guildID}
@@ -108,6 +132,23 @@ def getLobbyHeadCount(guildID, gameID):
     result = target.find_one(query, {"players": 1, "_id": 0})
     # print(result["players"])
     return len(result["players"])
+# TODO: finish this leaderboard function
+def getLeaderboard(guildID):
+    target = db["players"]
+    query = {"guildInfo.guildID": str(guildID)}
+    result = target.find(query)
+    ELOList = []
+    playerList = []
+    for elem in result:
+        for server in elem["guildInfo"]:
+            if server["guildID"] == str(guildID):
+                ELOList.append(server["ELO"])
+                print(server["ELO"])
+        playerList.append(elem["discordName"])
+        print(elem["discordName"])
+    leaderboard = "test"
+    return (ELOList, playerList)
+# print(getLeaderboard(166422822296485888))
 
 def drawLobby(guildID, gameID):
     target = db["games"]
@@ -115,7 +156,7 @@ def drawLobby(guildID, gameID):
     result = target.find_one(query, {"_id": 0})
     # print(result["players"])
     #\u1CBC is an empty character
-    lobbyString = "\n**Attackers**" + "\u1CBC"*44 + "Map: " + result["map"] + "\n```\n"
+    lobbyString = "Map: " + result["map"] + "\n**Attackers**" +  "\n```\n"
     if len(result["team1"]) == 0:
         lobbyString += "empty"
     for elem in result["team1"]:
@@ -212,7 +253,7 @@ def getGameStats(guildID, gameID):
 # gets how many kills a given user has across all stored Valorant games    
 def getKills(valorantName):
     target = db['gamesData']
-    result = (target.aggregate([
+    result = target.aggregate([
             {
                 "$unwind": "$kills"
             },
@@ -221,7 +262,7 @@ def getKills(valorantName):
                     "_id": "$kills.killer_display_name", "total": {"$sum":1}
                 }
             }
-    ]))
+    ])
     for elem in result:
         if elem["_id"] == valorantName:
             return elem
@@ -245,5 +286,5 @@ def getKills(valorantName):
 # print(getLobbyHeadCount(166422822296485888, 1))
 # print(checkIfPlayerInGame("Velocity#9534", 166422822296485888, 1))
 # removePlayerFromGame("Velocity#9534", 166422822296485888, 1)
-# team1Wins(166422822296485888, 1)
+# team1Wins(166422822296485888, 9)
 # updatePlayerELO("Velocity#9534", 166422822296485888, 10)

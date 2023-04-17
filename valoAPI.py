@@ -38,3 +38,5 @@ def getKills(killer, target):
             if kill["killer_display_name"] == killer and kill["victim_display_name"] == target:
                 killcount += 1
     return killcount         
+
+# print(getLastGame("Velocity#300"))

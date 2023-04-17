@@ -4,6 +4,7 @@ import random
 from valoAPI import *
 from jsonHandler import *
 import mongoDBHandler as Mongo
+from cardGenerator import *
 
 # Open config file
 configFile = loadJson("config.json")
@@ -21,7 +22,7 @@ class Game:
         self.players = []
         self.team1 = []
         self.team2 = []
-        self.map = random.choice(["Split", "Ascent", "Icebox", "Breeze", "Bind", "Haven", "Fracture", "Pearl"])
+        self.map = random.choice(["Split", "Ascent", "Icebox", "Breeze", "Bind", "Haven", "Fracture", "Pearl", "Lotus"])
         self.gameID = gameID
         self.result = "waiting to start"
         self.guildID = guildID
@@ -132,7 +133,7 @@ async def flame(ctx):
 )
 async def register(ctx):
     guildID = ctx.guild_id
-    discordName = str(ctx.user) + "#" + str(ctx.user.discriminator)
+    discordName = str(ctx.user.username) + "#" + str(ctx.user.discriminator)
     print(f"Registering user {discordName} in server {guildID}")
     registerText = interactions.TextInput(
         style=interactions.TextStyleType.SHORT,
@@ -154,7 +155,7 @@ async def register(ctx):
 @bot.modal("registerForm")
 async def modal_response(ctx, response: str):
     guildID = ctx.guild_id
-    discordName = str(ctx.user) + "#" + str(ctx.user.discriminator)
+    discordName = str(ctx.user.username) + "#" + str(ctx.user.discriminator)
     if checkPlayer(response) != 200:
         await ctx.send(f"Error finding {response} on Valorant servers.")
     else:
@@ -175,7 +176,7 @@ async def modal_response(ctx, response: str):
 )
 async def deleteme(ctx):
     guildID = ctx.guild_id
-    discordName = str(ctx.user) + "#" + str(ctx.user.discriminator)
+    discordName = str(ctx.user.username) + "#" + str(ctx.user.discriminator)
     print(f"Deleting user {ctx.author.name}")
     if Mongo.checkUser(discordName) == 0:
         await ctx.send(f"You are not registered")
@@ -193,7 +194,7 @@ def gameControls(gameStatus):
     )
     joinTeam2 = interactions.Button(
         style=interactions.ButtonStyle.PRIMARY, 
-        label="joinDefenders",
+        label="join Defenders",
         custom_id="joinDefenders"  
     )
     leaveGame = interactions.Button(
@@ -210,13 +211,13 @@ def gameControls(gameStatus):
     team1Win = interactions.Button(
         style=interactions.ButtonStyle.PRIMARY,
         label="Team 1 Wins", 
-        custom_id="attackersWin"
+        custom_id="team1Win"
     )
 
     team2Win = interactions.Button(
         style=interactions.ButtonStyle.PRIMARY,
         label="Team 2 Wins", 
-        custom_id="defendersWin"
+        custom_id="team2Win"
     )
 
     cancelGame = interactions.Button(
@@ -258,7 +259,7 @@ async def create(ctx):
 @bot.component("joinAttackers")
 async def joinAttackers(ctx):
     guildID = int(ctx.guild_id)
-    discordName = str(ctx.user) + "#" + str(ctx.user.discriminator)
+    discordName = str(ctx.user.username) + "#" + str(ctx.user.discriminator)
     if Mongo.checkGuild(discordName, guildID) == False:
         await ctx.send("You have to /register before you can join a game", ephemeral = True)
     else:
@@ -279,7 +280,7 @@ async def joinAttackers(ctx):
 @bot.component("joinDefenders")
 async def joinDefenders(ctx):
     guildID = int(ctx.guild_id)
-    discordName = str(ctx.user) + "#" + str(ctx.user.discriminator)
+    discordName = str(ctx.user.username) + "#" + str(ctx.user.discriminator)
     if Mongo.checkGuild(discordName, guildID) == False:
         await ctx.send("You have to /register before you can join a game", ephemeral = True)
     else:
@@ -299,7 +300,7 @@ async def joinDefenders(ctx):
 @bot.component("leaveGame")
 async def leaveGame(ctx):
     guildID = int(ctx.guild_id)
-    discordName = str(ctx.user) + "#" + str(ctx.user.discriminator) 
+    discordName = str(ctx.user.username) + "#" + str(ctx.user.discriminator) 
     Mongo.removePlayerFromGame(discordName, guildID, Mongo.getCurrentGameID(guildID))
     if Mongo.getLobbyHeadCount(guildID, Mongo.getCurrentGameID(guildID)) < 10:
         await ctx.edit(embeds=[interactions.Embed(
@@ -317,7 +318,7 @@ async def leaveGame(ctx):
 @bot.component("startGame")
 async def startGame(ctx):
     guildID = int(ctx.guild_id)
-    Mongo.setCurrentLobbyStatus("in progress")
+    Mongo.setCurrentLobbyStatus(guildID, True)
     await ctx.edit(embeds=[interactions.Embed(
             title = f"Game {Mongo.getCurrentGameID(guildID)}", 
             description = Mongo.drawLobby(guildID, Mongo.getCurrentGameID(guildID)))], 
@@ -327,10 +328,10 @@ async def startGame(ctx):
 @bot.component("team1Win")
 async def team1Win(ctx):
     guildID = int(ctx.guild_id)
-    Mongo.team1Wins(guildID, Mongo.getCurrentGameID)
-    Mongo.setCurrentLobbyStatus(guildID, "team1")
+    Mongo.team1Wins(guildID, Mongo.getCurrentGameID(guildID))
+    Mongo.setCurrentLobbyStatus(guildID, False)
+    Mongo.addDocument(getLastGame(Mongo.getValorantName(Mongo.getCurrentGamePlayer1(guildID, Mongo.getCurrentGameID(guildID)))), "gamesData")
     Mongo.incrementGameID(guildID)
-    # saveLastGame(valorantName) write function to grab first player's valorant name in lobby
     await ctx.edit(embeds=[interactions.Embed(
             title = f"Game {Mongo.getCurrentGameID(guildID)-1}", 
             description = Mongo.drawLobby(guildID, Mongo.getCurrentGameID(guildID)-1))], 
@@ -340,10 +341,10 @@ async def team1Win(ctx):
 @bot.component("team2Win")
 async def team2Win(ctx):
     guildID = int(ctx.guild_id)
-    Mongo.team2Wins(guildID, Mongo.getCurrentGameID)
-    Mongo.setCurrentLobbyStatus(guildID, "team2")
+    Mongo.team2Wins(guildID, Mongo.getCurrentGameID(guildID))
+    Mongo.setCurrentLobbyStatus(guildID, False)
+    Mongo.addDocument(getLastGame(Mongo.getValorantName(Mongo.getCurrentGamePlayer1(guildID, Mongo.getCurrentGameID(guildID)))), "gamesData")
     Mongo.incrementGameID(guildID)
-    # saveLastGame(valorantName) write function to grab first player's valorant name in lobby
     await ctx.edit(embeds=[interactions.Embed(
             title = f"Game {Mongo.getCurrentGameID(guildID)-1}", 
             description = Mongo.drawLobby(guildID, Mongo.getCurrentGameID(guildID)-1))], 
@@ -354,6 +355,7 @@ async def team2Win(ctx):
 async def cancelGame(ctx):
     guildID = int(ctx.guild_id)
     Mongo.setCurrentLobbyStatus(guildID, False)
+    # TODO: Mongo.setlobbyresult(guildID, "canceled")
     Mongo.incrementGameID(guildID)
     await ctx.edit(embeds=[interactions.Embed(
             title = f"Game {Mongo.getCurrentGameID(guildID)-1}", 
@@ -377,12 +379,11 @@ async def cancelGame(ctx):
     # scope=ID
 )
 async def leaderboard(ctx):
-    print(getPlayersSorted())
-    playerList = getPlayersSorted()
+    playerList = Mongo.getLeaderboard(ctx.guild_id)
     column1 = ""
     column2 = ""
     for player in playerList:
-        column1 += player[1] + "\n" # + ": " +str(player[0]) + "\n"
+        column1 += str(player[1]) + "\n" # + ": " +str(player[0]) + "\n"
     for player in playerList:
         column2 += str(player[0]) + "\n"
     leaderboardEmbed = interactions.Embed(title="Leaderboard")
@@ -410,26 +411,27 @@ async def leaderboard(ctx):
     ]
 )
 
-# Generate player cards
-
-
 # shows number of times killer has killed target in all games
 async def killedby(ctx, killer, target):
     killcount = getKills(killer, target)
     embed = interactions.Embed(title = f"{target} has been killed by {killer} {killcount} times.")
     await ctx.send(embeds=[embed])
 
-
+# Generate player cards
 @bot.command(
-    name="embedtest", 
-    description="testing embed function",
-    # scope=ID
+        name="playercard", 
+        description="generate the players stats card", 
+        scope=166422822296485888,
 )
-
-async def embedtest(ctx):
-    print("test before embed creation")
-    embed=interactions.Embed(title = "Test", description = "test description")
-    await ctx.send(embeds=[embed])
-
+async def playercard(ctx):
+    discordName = str(ctx.user.username) + "#" + str(ctx.user.discriminator)
+    guildID = str(ctx.guild_id)
+    print(Mongo.getValorantName(discordName))
+    if Mongo.checkUser(discordName):
+        generateCard(discordName, Mongo.getValorantName(discordName), "Platinum", Mongo.returnELO(discordName, guildID), 55.3, 22.2, 132.2, 8.1, 22.1, 1.4)
+        file=interactions.File("PlayerCards/working.png")
+        await ctx.send(files=[file])
+    else:
+        await ctx.send("No player card available for this user")
 # starts the bot
 bot.start()
